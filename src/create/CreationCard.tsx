@@ -1,7 +1,7 @@
-import { Accordion, AccordionActions, AccordionDetails, AccordionSummary, Box, Button, Card, CardActions, Divider, FormControl, FormControlLabel, List, ListItem, MenuItem, Select, Stack, Switch, TextField, Typography } from "@mui/material";
+import { Accordion, AccordionDetails, AccordionSummary, Button, Divider, FormControlLabel, MenuItem, Select, Stack, Switch, TextField, Typography } from "@mui/material";
 import { Role, Location, Action, Event, ActionCondition, EventCondition, RoleLocationCondition, Game } from "../game/definitions";
 import { useState } from "react";
-import { Description, ExpandMore } from "@mui/icons-material";
+import { ExpandMore } from "@mui/icons-material";
 
 export function NewButton<T>({text, array, setArray, defaultElement}: {text?: string, array: T[], setArray: (array: T[]) => void, defaultElement: T}) {
   return (
@@ -122,7 +122,7 @@ function ConditionEditor({game, index, condition, setCondition}: ConditionEditor
   }
 
   return (
-    <Accordion>
+    <Accordion key={index}>
       <AccordionSummary expandIcon={<ExpandMore />}>
         <Typography>{condition.description}</Typography>
       </AccordionSummary>

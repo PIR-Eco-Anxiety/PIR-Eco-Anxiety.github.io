@@ -1,7 +1,5 @@
-import { useState } from 'react'
 import './Home.css'
 import { ChoicePrompt } from './components/ChoicePrompt';
-import { Play } from './Play';
 
 
 function Home() {

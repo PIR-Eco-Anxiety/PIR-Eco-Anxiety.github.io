@@ -1,5 +1,4 @@
 import { Box, Card, CardActionArea, CardContent, Stack, Typography } from "@mui/material";
-import { useState } from "react";
 
 interface ChoicePromptProps {
   prompt: string;
@@ -14,7 +13,7 @@ export function ChoicePrompt({ prompt, options }: ChoicePromptProps) {
         <Stack direction='row' spacing={2}>
           {options.map((option, index) => {
             return (
-              <Card>
+              <Card key={index}>
                 <CardActionArea onClick={option.onChoose} {...(option.link ? { href: option.link } : {})}>
                   <CardContent>
                     <Typography variant='h5'>{option.name}</Typography>

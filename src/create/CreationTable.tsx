@@ -2,7 +2,7 @@ import { useState } from "react";
 import { CardColumn, CardTable } from "../components/CardTable";
 import { Role, Location, Action, Event, Game, game as defaultGame, RoleLocationCondition, EventCondition } from "../game/definitions";
 import { LocationCreationCard, RoleCreationCard, EventCreationCard, ActionCreationCard, NewButton } from "./CreationCard";
-import { Accordion, AccordionSummary, Box, Button, Link, Stack, styled, Tab, Tabs, Typography } from "@mui/material";
+import { Box, Button, Link, Stack, styled, Tab, Tabs, Typography } from "@mui/material";
 import CloudUploadIcon from '@mui/icons-material/CloudUpload';
 import { a11yProps, CustomTabPanel } from "../components/CustomTabPanel";
 import { CloudDownload } from "@mui/icons-material";
@@ -102,7 +102,7 @@ export function CreationInterface() {
   const setRoles = (roles: Role[]) => {
     setGame({...game, roles})
     // Update game.roles ids and reflect changes in game.actions conditions
-    let idMap = new Map<number, number>();
+    const idMap = new Map<number, number>();
     roles.forEach((role, index) => {
       idMap.set(role.id, index);
       role.id = index;
@@ -111,7 +111,7 @@ export function CreationInterface() {
     game.actions.forEach(action => {
       action.conditions.forEach(condition => {
         if (condition.hasOwnProperty('roleId')) {
-          let c = condition as RoleLocationCondition;
+          const c = condition as RoleLocationCondition;
           c.roleId = idMap.get(c.roleId) ?? 0;
         }
       });
@@ -121,7 +121,7 @@ export function CreationInterface() {
   const setLocations = (locations: Location[]) => {
     setGame({...game, locations})
     // Update game.locations ids and reflect changes in game.actions conditions
-    let idMap = new Map<number, number>();
+    const idMap = new Map<number, number>();
     locations.forEach((location, index) => {
       idMap.set(location.id, index);
       location.id = index;
@@ -130,7 +130,7 @@ export function CreationInterface() {
     game.actions.forEach(action => {
       action.conditions.forEach(condition => {
         if (condition.hasOwnProperty('locationId')) {
-          let c = condition as RoleLocationCondition;
+          const c = condition as RoleLocationCondition;
           c.locationId = idMap.get(c.locationId) ?? 0;
         }
       });
@@ -140,7 +140,7 @@ export function CreationInterface() {
   const setEvents = (events: Event[]) => {
     setGame({...game, events})
     // Update game.events ids and reflect changes in game.actions conditions
-    let idMap = new Map<number, number>();
+    const idMap = new Map<number, number>();
     events.forEach((event, index) => {
       idMap.set(event.id, index);
       event.id = index;
@@ -149,7 +149,7 @@ export function CreationInterface() {
     game.actions.forEach(action => {
       action.conditions.forEach(condition => {
         if (condition.hasOwnProperty('eventId')) {
-          let c = condition as EventCondition;
+          const c = condition as EventCondition;
           c.eventId = idMap.get(c.eventId) ?? 0;
         }
       });
