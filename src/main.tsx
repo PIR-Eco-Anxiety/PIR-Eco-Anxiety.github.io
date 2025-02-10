@@ -7,6 +7,7 @@ import { createTheme } from '@mui/material'
 import { HashRouter, Route, Routes } from 'react-router'
 import { Play } from './Play.tsx'
 import { Create } from './Create.tsx'
+import { Print } from './Print.tsx'
 
 const theme = createTheme({
   palette: {
@@ -22,6 +23,7 @@ createRoot(document.getElementById('root')!).render(
           <Route path="/" element={<Home />} />
           <Route path="/play" element={<Play />} />
           <Route path="/create" element={<Create />} />
+          <Route path="/print" element={<Print />} />
         </Routes>
       </HashRouter>
     </ThemeProvider>

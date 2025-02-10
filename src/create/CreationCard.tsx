@@ -45,8 +45,10 @@ export function LocationCreationCard({location, setLocation}: {location: Locatio
         <Typography>{location.name}</Typography>
       </AccordionSummary>
       <AccordionDetails>
-        <TextField name="name" label="Nom" value={location.name} variant="outlined" onChange={onChange}/>
-        <TextField name="description" label="Description" value={location.description} variant="outlined" multiline onChange={onChange}/>
+        <Stack spacing={2}>
+          <TextField name="name" label="Nom" value={location.name} variant="outlined" onChange={onChange}/>
+          <TextField name="description" label="Description" value={location.description} variant="outlined" multiline onChange={onChange}/>
+        </Stack>
       </AccordionDetails>
     </Accordion>
   );
@@ -63,8 +65,10 @@ export function EventCreationCard({event, setEvent}: {event: Event, setEvent: (e
         <Typography>{event.name}</Typography>
       </AccordionSummary>
       <AccordionDetails>
-        <TextField name="name" label="Nom" value={event.name} variant="outlined" onChange={onChange}/>
-        <TextField name="description" label="Description" value={event.description} variant="outlined" multiline onChange={onChange}/>
+        <Stack spacing={2}>
+          <TextField name="name" label="Nom" value={event.name} variant="outlined" onChange={onChange}/>
+          <TextField name="description" label="Description" value={event.description} variant="outlined" multiline onChange={onChange}/>
+        </Stack>
       </AccordionDetails>
     </Accordion>
   );

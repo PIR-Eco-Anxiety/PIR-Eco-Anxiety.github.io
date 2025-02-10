@@ -10,10 +10,10 @@ export function ChoicePrompt({ prompt, options }: ChoicePromptProps) {
     <Box>
       <Stack spacing={5}>
         <Typography variant='h4'>{prompt}</Typography>
-        <Stack direction='row' spacing={2}>
+        <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', flexWrap: 'wrap' }}>
           {options.map((option, index) => {
             return (
-              <Card key={index}>
+              <Card key={index} sx={{ margin: 1 }}>
                 <CardActionArea onClick={option.onChoose} {...(option.link ? { href: option.link } : {})}>
                   <CardContent>
                     <Typography variant='h5'>{option.name}</Typography>
@@ -23,7 +23,7 @@ export function ChoicePrompt({ prompt, options }: ChoicePromptProps) {
               </Card>
             );
           })}
-        </Stack>
+        </Box>
       </Stack>
     </Box>
   );

@@ -13,6 +13,20 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+#root {
+  max-width: 1280px;
+  width: 80%;
+  margin: 2 auto;
+  text-align: center;
+}
+
+@media print {
+  #root {
+    width: 100%;
+    margin: 0;
+  }
+}
+
 a {
   font-weight: 500;
   color: #646cff;
@@ -28,6 +42,15 @@ body {
   place-items: center;
   min-width: 320px;
   min-height: 100vh;
+}
+
+@media print {
+  body {
+    margin: 0;
+    display: block;
+    min-width: 0;
+    min-height: 0;
+  }
 }
 
 h1 {
