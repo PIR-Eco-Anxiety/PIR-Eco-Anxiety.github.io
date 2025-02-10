@@ -198,7 +198,14 @@ export function CreationInterface() {
     <>
       <Box sx={{ width: '100%' }}>
         <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
-          <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
+          <Tabs 
+            value={value}
+            onChange={handleChange}
+            aria-label="Création de rôles, lieux, évènements et actions (tabs)"
+            variant="scrollable"
+            scrollButtons="auto"
+            allowScrollButtonsMobile
+          >
             <Tab label="Roles" {...a11yProps(0)} />
             <Tab label="Lieux" {...a11yProps(1)} />
             <Tab label="Evenements" {...a11yProps(2)} />
