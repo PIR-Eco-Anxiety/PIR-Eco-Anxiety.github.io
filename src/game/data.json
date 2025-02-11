@@ -1,65 +1,11 @@
 {
-    "roles": [
-        {
-            "id": 1,
-            "name": "Etudiant",
-            "description": "L'étudiant fait blablabla..."
-        },
-        {
-            "id": 2,
-            "name": "Politicien",
-            "description": "Aime mentir..."
-        }
-    ],
-    "locations": [
-        {
-            "id": 1,
-            "name": "Plage",
-            "description": "A la plage on se baigne."
-        },
-        {
-            "id": 2,
-            "name": "Mairie",
-            "description": "A la mairie il y a le maire."
-        }
-    ],
-    "events": [
-        {
-            "id": 1,
-            "name": "Trump est élu",
-            "description": "C'est la sauce."
-        },
-        {
-            "id": 2,
-            "name": "Guerre nucléaire",
-            "description": "Coup dur"
-        }
-    ],
+    "roles": [],
+    "map": {
+        "locations": [],
+        "matrix": [[]]
+    },
+    "events": [],
     "actions": [
-        {
-            "id": 1,
-            "name": "Renverser le gouvernement",
-            "description": "Il faut bien.",
-            "points": 1000, 
-            "conditions": [
-                {
-                    "description": "Politicien à la plage",
-                    "roleId": 2,
-                    "locationId": 1
-                },
-                {
-                    "description": "Trump est président",
-                    "eventId": 1,
-                    "occured": false
-                }
-            ]
-        },
-        {
-            "id": 2,
-            "name": "Ne rien faire",
-            "description": "OKLM chef",
-            "points": 10,
-            "conditions": []
-        }
+
     ]
 }

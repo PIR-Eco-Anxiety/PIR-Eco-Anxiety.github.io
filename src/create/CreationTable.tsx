@@ -1,6 +1,7 @@
 import { useState } from "react";
+import { useStickyState } from "../hooks/stickyState";
 import { Role, Location, Action, Event, Game, game as defaultGame, RoleLocationCondition, EventCondition, ActionCondition } from "../game/definitions";
-import { LocationCreationCard, RoleCreationCard, EventCreationCard, ActionCreationCard, NewButton } from "./CreationCard";
+import { LocationCreationCard, RoleCreationCard, EventCreationCard, ActionCreationCard, NewButton, DeleteButton } from "./CreationCard";
 import { Box, Button, Link, Stack, styled, Tab, Tabs, Typography } from "@mui/material";
 import CloudUploadIcon from '@mui/icons-material/CloudUpload';
 import { a11yProps, CustomTabPanel } from "../components/CustomTabPanel";
@@ -37,7 +38,7 @@ function RoleCreationTab({roles, setRoles}: {roles: Role[], setRoles: (roles: Ro
       title="Création de rôles"
       items={roles}
       setItems={setRoles}
-      defaultItem={{id: roles.length, name: 'Nom', description: 'Description'}}
+      defaultItem={{id: roles.length, name: 'Nom', description: 'Description', startLocationId: 0}}
       getElement={(role, index, f) => <RoleCreationCard key={index} role={role} setRole={f}/>
     }/>
   );
@@ -49,7 +50,7 @@ function LocationCreationTab({locations, setLocations}: {locations: Location[], 
       title="Création de lieux"
       items={locations}
       setItems={setLocations}
-      defaultItem={{id: locations.length, name: 'Nom', description: 'Description'}}
+      defaultItem={{id: locations.length, name: 'Nom', description: 'Description', x: 0, y: 0}}
       getElement={(location, index, f) => <LocationCreationCard key={index} location={location} setLocation={f}/>
     }/>
   );
@@ -73,7 +74,7 @@ function ActionCreationTab({game, actions, setActions}: {game: Game, actions: Ac
       title="Création d'actions"
       items={actions}
       setItems={setActions}
-      defaultItem={{id: actions.length, name: 'Nom', points: 0, description: 'Description', conditions: []}}
+      defaultItem={{id: actions.length, name: 'Nom', points: 0, description: 'Description', condition: {description: '', roleIds: [], locationId: 0}}}
       getElement={(action, index, f) => <ActionCreationCard key={index} game={game} action={action} setAction={f}/>
     }/>
   );
@@ -96,7 +97,7 @@ function ImportExportButtons({game, setGame}: {game: Game, setGame: (game: Game)
     <Stack spacing={2} direction="row">
       <Button
         component={Link}
-        href={'data:application/json,' + encodeURIComponent(JSON.stringify(game))}
+        href={'data:application/json,' + encodeURIComponent(JSON.stringify(game, null, 2))}
         download="game.json"
         role={undefined}
         variant="contained"
@@ -130,13 +131,13 @@ function ImportExportButtons({game, setGame}: {game: Game, setGame: (game: Game)
 type GameProp = Action | Role | Location | Event;
 
 export function CreationInterface() {
-  const [game, setGame] = useState<Game>(JSON.parse(JSON.stringify(defaultGame))); // Deep copy
-  const [value, setValue] = useState(0);
+  const [game, setGame] = useStickyState<Game>(JSON.parse(JSON.stringify(defaultGame)), "gameEdit"); // Deep copy
+  const [tabNumber, setTabNumber] = useState(0);
 
   const createSetter = (
     game: Game,
     updateGameProp: (prop: GameProp[]) => void,
-    updateCondition: (condition: ActionCondition, idMap: Map<number, number>) => void
+    updateCondition: (condition: RoleLocationCondition, idMap: Map<number, number>) => void
   ) => {
     return (elements: GameProp[]) => {
       const idMap = new Map<number, number>();
@@ -146,7 +147,7 @@ export function CreationInterface() {
       });
       updateGameProp(elements);
       game.actions.forEach(action => {
-        action.conditions.forEach(c => updateCondition(c, idMap));
+        updateCondition(action.condition, idMap);
       });
     }
   }
@@ -155,32 +156,22 @@ export function CreationInterface() {
     game,
     (roles: any[]) => setGame({...game, roles}),
     (condition, idMap) => {
-      if (condition.hasOwnProperty('roleId')) {
-        const c = condition as RoleLocationCondition;
-        c.roleId = idMap.get(c.roleId) ?? 0;
-      }
+      condition.roleIds = condition.roleIds.map(roleId => idMap.get(roleId)!);
     }
   );
 
   const setLocations = createSetter(
     game,
-    (locations: any[]) => setGame({...game, locations}),
+    (locations: any[]) => setGame({...game, map: {locations: locations, matrix: [[]]}}),
     (condition, idMap) => {
-      if (condition.hasOwnProperty('locationId')) {
-        const c = condition as RoleLocationCondition;
-        c.locationId = idMap.get(c.locationId) ?? 0;
-      }
+      condition.locationId = idMap.get(condition.locationId)!;
     }
   );
 
   const setEvents = createSetter(
     game,
     (events: any[]) => setGame({...game, events}),
-    (condition, idMap) => {
-      if (condition.hasOwnProperty('eventId')) {
-        const c = condition as EventCondition;
-        c.eventId = idMap.get(c.eventId) ?? 0;
-      }
+    (_condition, _idMap) => {
     }
   );
 
@@ -191,7 +182,7 @@ export function CreationInterface() {
   );
 
   const handleChange = (_event: React.SyntheticEvent, newValue: number) => {
-    setValue(newValue);
+    setTabNumber(newValue);
   };
 
   return (
@@ -199,7 +190,7 @@ export function CreationInterface() {
       <Box sx={{ width: '100%' }}>
         <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
           <Tabs 
-            value={value}
+            value={tabNumber}
             onChange={handleChange}
             aria-label="Création de rôles, lieux, évènements et actions (tabs)"
             variant="scrollable"
@@ -212,16 +203,16 @@ export function CreationInterface() {
             <Tab label="Actions" {...a11yProps(3)} />
           </Tabs>
         </Box>
-        <CustomTabPanel value={value} index={0}>
+        <CustomTabPanel value={tabNumber} index={0}>
           <RoleCreationTab roles={game.roles} setRoles={setRoles}/>
         </CustomTabPanel>
-        <CustomTabPanel value={value} index={1}>
-          <LocationCreationTab locations={game.locations} setLocations={setLocations}/>
+        <CustomTabPanel value={tabNumber} index={1}>
+          <LocationCreationTab locations={game.map.locations} setLocations={setLocations}/>
         </CustomTabPanel>
-        <CustomTabPanel value={value} index={2}>
+        <CustomTabPanel value={tabNumber} index={2}>
           <EventCreationTab events={game.events} setEvents={setEvents}/>
         </CustomTabPanel>
-        <CustomTabPanel value={value} index={3}>
+        <CustomTabPanel value={tabNumber} index={3}>
           <ActionCreationTab game={game} actions={game.actions} setActions={setActions}/>
         </CustomTabPanel>
       </Box>
