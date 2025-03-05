@@ -1,6 +1,5 @@
 import { Accordion, AccordionDetails, AccordionSummary, Button, Divider, FormControlLabel, MenuItem, Select, Stack, Switch, TextField, Typography } from "@mui/material";
-import { Role, Location, Action, Event, ActionCondition, EventCondition, RoleLocationCondition, Game, OpenQuestion, MultipleChoiceQuestion } from "../game/definitions";
-import { useState } from "react";
+import { Role, Location, Action, Event, Game, OpenQuestion, MultipleChoiceQuestion } from "../game/definitions";
 import { ExpandMore } from "@mui/icons-material";
 
 
@@ -38,12 +37,6 @@ export function DeleteButton<T>({text, index, array, setArray}: DeleteButtonProp
       {text || "Supprimer"}
     </Button>
   );
-}
-
-interface ListEditorProps<T> {
-  array: T[];
-  setArray: (array: T[]) => void;
-  getElement: (item: T, index: number) => React.ReactNode;
 }
   
 
@@ -178,17 +171,20 @@ function RefSelector({label, refs, setRef, selectedRefId}: RefSelectorProps) {
 }
 
 function ActionBasicsSelector({action, setAction}: {action: Action, setAction: (action: Action) => void}) {
-  const onChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setAction({...action, [event.target.name]: event.target.value});
-  }
 
   return (
     <>
       <Stack spacing={2}>
-        <TextField name="name" label="Nom" value={action.name} variant="outlined" onChange={onChange}/>
-        <TextField name="points" label="Points" value={action.points} variant="outlined" type="number" onChange={onChange}/>
+        <TextField name="name" label="Nom" value={action.name} variant="outlined" onChange={
+          (e) => setAction({...action, name: e.target.value})
+        }/>
+        <TextField name="points" label="Points" value={action.points} variant="outlined" type="number" onChange={
+          (e) => setAction({...action, points: parseInt(e.target.value)})
+        }/>
       </Stack>
-      <TextField name="description" label="Description" value={action.description} variant="outlined" multiline onChange={onChange}/>
+      <TextField name="description" label="Description" value={action.description} variant="outlined" multiline onChange={
+        (e) => setAction({...action, description: e.target.value})
+      }/>
     </>
   );
 }

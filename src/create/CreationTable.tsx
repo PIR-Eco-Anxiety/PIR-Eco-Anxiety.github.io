@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useStickyState } from "../hooks/stickyState";
-import { Role, Location, Action, Event, Game, game as defaultGame, RoleLocationCondition, EventCondition, ActionCondition } from "../game/definitions";
-import { LocationCreationCard, RoleCreationCard, EventCreationCard, ActionCreationCard, NewButton, DeleteButton } from "./CreationCard";
+import { Role, Location, Action, Event, Game, game as defaultGame, RoleLocationCondition } from "../game/definitions";
+import { LocationCreationCard, RoleCreationCard, EventCreationCard, ActionCreationCard, NewButton } from "./CreationCard";
 import { Box, Button, Link, Stack, styled, Tab, Tabs, Typography } from "@mui/material";
 import CloudUploadIcon from '@mui/icons-material/CloudUpload';
 import { a11yProps, CustomTabPanel } from "../components/CustomTabPanel";
@@ -117,7 +117,6 @@ function ImportExportButtons({game, setGame}: {game: Game, setGame: (game: Game)
         <VisuallyHiddenInput
           type="file"
           onChange={(event) => {
-            console.log(event.target.files);
             event.target.files && event.target.files[0].text().then(text => {
               setGame(JSON.parse(text));
             });

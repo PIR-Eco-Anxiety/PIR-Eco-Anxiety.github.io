@@ -1,4 +1,4 @@
-import data from './data.json';
+import data from './game.json';
 
 export interface Role {
     id: number;

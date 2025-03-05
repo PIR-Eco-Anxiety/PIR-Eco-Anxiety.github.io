@@ -7,7 +7,7 @@ import { createTheme } from '@mui/material'
 import { HashRouter, Route, Routes } from 'react-router'
 import { Play } from './Play.tsx'
 import { Create } from './Create.tsx'
-import { Print } from './Print.tsx'
+import { Print } from './print/PrintingInterface.tsx'
 
 const theme = createTheme({
   palette: {
