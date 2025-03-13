@@ -1,9 +1,9 @@
 import { Button, FormControl, InputLabel, MenuItem, Select, SelectChangeEvent, styled,  } from "@mui/material";
 import React, { useState } from "react";
-import { Game } from "../game/definitions";
-import { game as defaultGame } from "../game/definitions";
 import { useStickyState } from "../hooks/stickyState";
 import CloudUploadIcon from '@mui/icons-material/CloudUpload';
+import defaultGame from "../defaultGame.json";
+import { Game } from "../models/game";
 
 const VisuallyHiddenInput = styled('input')({
   clip: 'rect(0 0 0 0)',

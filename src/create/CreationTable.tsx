@@ -1,11 +1,17 @@
 import { useState } from "react";
 import { useStickyState } from "../hooks/stickyState";
-import { Role, Location, Action, Event, Game, game as defaultGame, RoleLocationCondition } from "../game/definitions";
-import { LocationCreationCard, RoleCreationCard, EventCreationCard, ActionCreationCard, NewButton } from "./CreationCard";
+import { LocationCreationCard, RoleCreationCard, EventCreationCard, ActionCreationCard } from "./CreationCards";
 import { Box, Button, Link, Stack, styled, Tab, Tabs, Typography } from "@mui/material";
 import CloudUploadIcon from '@mui/icons-material/CloudUpload';
 import { a11yProps, CustomTabPanel } from "../components/CustomTabPanel";
 import { CloudDownload } from "@mui/icons-material";
+import { Action, isGroupAction, isPersonalAction } from "../models/action";
+import { Game } from "../models/game";
+import { Role } from "../models/role";
+import { Location } from "../models/map";
+import { Event } from "../models/event";
+import { DeleteButton, NewButton } from "./Common";
+import defaultGame from "../defaultGame.json";
 
 interface CreationTabProps<T> {
   title: string;
@@ -27,6 +33,7 @@ function CreationTab<T>({title, items, setItems, defaultItem, getElement}: Creat
           })
         ))}
         <NewButton array={items} setArray={setItems} defaultElement={defaultItem}/>
+        <DeleteButton array={items} setArray={setItems} index={items.length - 1}/>
       </Stack>
     </>
   );
@@ -38,7 +45,7 @@ function RoleCreationTab({roles, setRoles}: {roles: Role[], setRoles: (roles: Ro
       title="Création de rôles"
       items={roles}
       setItems={setRoles}
-      defaultItem={{id: roles.length, name: 'Nom', description: 'Description', startLocationId: 0}}
+      defaultItem={{id: roles.length, name: 'Nom', description: 'Description', color: '#000000'}}
       getElement={(role, index, f) => <RoleCreationCard key={index} role={role} setRole={f}/>
     }/>
   );
@@ -74,7 +81,7 @@ function ActionCreationTab({game, actions, setActions}: {game: Game, actions: Ac
       title="Création d'actions"
       items={actions}
       setItems={setActions}
-      defaultItem={{id: actions.length, name: 'Nom', points: 0, description: 'Description', condition: {description: '', roleIds: [], locationId: 0}}}
+      defaultItem={{id: actions.length, name: 'Nom', points: 0, description: 'Description', playerNumber: 1, locationId: 0}}
       getElement={(action, index, f) => <ActionCreationCard key={index} game={game} action={action} setAction={f}/>
     }/>
   );
@@ -136,7 +143,7 @@ export function CreationInterface() {
   const createSetter = (
     game: Game,
     updateGameProp: (prop: GameProp[]) => void,
-    updateCondition: (condition: RoleLocationCondition, idMap: Map<number, number>) => void
+    updateCondition: (action: Action, idMap: Map<number, number>) => void
   ) => {
     return (elements: GameProp[]) => {
       const idMap = new Map<number, number>();
@@ -145,8 +152,8 @@ export function CreationInterface() {
         element.id = index;
       });
       updateGameProp(elements);
-      game.actions.forEach(action => {
-        updateCondition(action.condition, idMap);
+      game.actions.filter(action => isGroupAction(action) || isPersonalAction(action)).forEach(action => {
+        updateCondition(action, idMap);
       });
     }
   }
@@ -154,16 +161,22 @@ export function CreationInterface() {
   const setRoles = createSetter(
     game,
     (roles: any[]) => setGame({...game, roles}),
-    (condition, idMap) => {
-      condition.roleIds = condition.roleIds.map(roleId => idMap.get(roleId)!);
+    (action, idMap) => {
+      if (isPersonalAction(action)) {
+        action.roleId = idMap.get(action.roleId)!;
+      } else if (isGroupAction(action)) {
+        action.roleIds = action.roleIds.map(roleId => idMap.get(roleId)!);
+      }
     }
   );
 
   const setLocations = createSetter(
     game,
-    (locations: any[]) => setGame({...game, map: {locations: locations, matrix: [[]]}}),
+    (locations: any[]) => setGame({...game, map: {locations: locations, adjacencyMatrix: [[]]}}),
     (condition, idMap) => {
-      condition.locationId = idMap.get(condition.locationId)!;
+      if (isPersonalAction(condition) || isGroupAction(condition)) {
+        condition.locationId = idMap.get(condition.locationId)!;
+      }
     }
   );
 
