@@ -1,12 +1,14 @@
 import { useState } from "react";
 import GameSourceSelector from "./components/GameSourceSelector";
-import { Backdrop, Button, Card, CardActionArea, CardContent, CardMedia, Container, Stack, Typography } from "@mui/material";
+import { Backdrop, Box, Button, Card, CardActionArea, CardActions, CardContent, CardMedia, Container, Stack, Typography } from "@mui/material";
+import PersonIcon from '@mui/icons-material/Person';
 import { useStickyState } from "./hooks/stickyState";
 import { Action, calculateScore, isGroupAction, isPersonalAction } from "./models/action";
 import { Game } from "./models/game";
 import defaultGame from "./defaultGame.json";
-import { isMultipleChoiceQuestion, isSimpleQuestion } from "./models/questions";
+import { isMultipleChoiceQuestion, isOpenQuestion, isSimpleQuestion } from "./models/questions";
 import { NullableRefSelector } from "./create/Common";
+import { LocationCity, LocationOn, People } from "@mui/icons-material";
 
 function ScoreCard({score}: {score: number}) {
   let photo;
@@ -75,6 +77,67 @@ function ScoreCard({score}: {score: number}) {
   );
 }
 
+
+function QuestionOverlay({action, onAnswer}: {action: Action, onAnswer: (correct: boolean) => void}) {
+  return (
+    <>
+      <Stack spacing={2} direction="column">
+        <Typography variant="h4">{action.bonusQuestion!.question}</Typography>
+        {isMultipleChoiceQuestion(action.bonusQuestion!) && (
+          action.bonusQuestion.answers.map(answer => (
+            <Button key={answer.answer} onClick={() => onAnswer(answer.isCorrect)}>{answer.answer}</Button>
+          ))
+        )}
+        {isSimpleQuestion(action.bonusQuestion!) && (
+          <>
+            <Typography variant="h5">Réponse: {action.bonusQuestion!.answer}</Typography>
+            <Button onClick={() => onAnswer(true)}>Réponse correcte</Button>
+            <Button onClick={() => onAnswer(false)}>Réponse incorrecte</Button>
+          </>
+        )}
+        {isOpenQuestion(action.bonusQuestion!) && (
+          <>
+            <Button onClick={() => onAnswer(true)}>Réponse acceptée</Button>
+            <Button onClick={() => onAnswer(false)}>Réponse pas acceptée</Button>
+          </>
+        )}
+      </Stack>
+    </>
+  )
+}
+
+function ActionOverlay({action, setOkClicked}: {action: Action, setOkClicked: (b: boolean) => void}) {
+  return (
+    <Stack>
+      <Typography variant="body1">
+        {action.description}
+      </Typography>
+      <Button variant="outlined" onClick={() => setOkClicked(true)}>
+        Accepter
+      </Button>
+    </Stack>
+  );
+}
+
+function ActionPopup({action, onQuestionAnswered}: {action: Action | null, onQuestionAnswered: (correct: boolean) => void}) {
+  const [okClicked, setOkClicked] = useState<boolean>(false);
+
+  return (
+    <Backdrop
+      open={action !== null}
+      sx={{zIndex: 100, backgroundColor: "rgba(0, 0, 0, 0.8)"}}
+    >
+      {action !== null && <>
+        {!okClicked ? (
+          <ActionOverlay action={action} setOkClicked={setOkClicked}/>
+        ) : (
+          <QuestionOverlay action={action} onAnswer={onQuestionAnswered}/>
+        )}
+      </>}
+    </Backdrop>
+  );
+}
+
 function ActionFilters({game, setFilteredActions}: {game: Game, setFilteredActions: (actions: Action[]) => void}) {
   const [roleIdFilter, setRoleIdFilter] = useState<number | null>(null);
   const [locationIdFilter, setLocationIdFilter] = useState<number | null>(null);
@@ -121,44 +184,35 @@ function ActionFilters({game, setFilteredActions}: {game: Game, setFilteredActio
 
 function ActionCard({game, action, onCompleteAction}: {game: Game, action: Action, onCompleteAction: () => void}) {
   return (
-    <Card>
+    <Card sx={{width: 400}}>
       <CardContent>
-        <Typography variant="h5">{action.name}</Typography>
-        <Typography variant="body1">{action.description}</Typography>
-        {isPersonalAction(action) && (
-          <Typography variant="body2">Role: {game.roles.find(role => role.id == action.roleId)!.name}</Typography>
-        )}
-        {isGroupAction(action) && (
-          <Typography variant="body2">Roles: {action.roleIds.map(roleId => game.roles.find(role => role.id == roleId)!.name).join(", ")}</Typography>
-        )}
-        <Typography variant="body2">Lieu: {game.map.locations.find(location => location.id == action.locationId)!.name}</Typography>
-      </CardContent>
-      <CardActionArea onClick={onCompleteAction}>
-        Completer
-      </CardActionArea>
-    </Card>
-  )
-}
+        <Stack spacing={1}>
+          <Typography variant="h5">{action.name}</Typography>
+          {isPersonalAction(action) && (
+            <Stack direction='row' spacing={2} display='flex' justifyContent='center' alignItems='center'>
+              <PersonIcon/>
+              <Typography variant="body2">{game.roles.find(role => role.id == action.roleId)!.name}</Typography>
+            </Stack>
+          )}
+          {isGroupAction(action) && (
+            <Stack direction='row' spacing={2} display='flex' justifyContent='center' alignItems='center'>
+              <People/>
+              <Typography variant="body2">{action.roleIds.map(roleId => game.roles.find(role => role.id == roleId)!.name).join(", ")}</Typography>
+            </Stack>
+          )}
+          <Stack direction='row' spacing={2} display='flex' justifyContent='center' alignItems='center'>
+            <LocationOn/>
+            <Typography variant="body2">{game.map.locations.find(location => location.id == action.locationId)!.name}</Typography>
+          </Stack>
+        </Stack>
 
-function QuestionOverlay({action, onAnswer}: {action: Action, onAnswer: (correct: boolean) => void}) {
-  return (
-    <>
-      <Stack spacing={2} direction="column">
-        <Typography variant="h4">{action.bonusQuestion!.question}</Typography>
-        {isMultipleChoiceQuestion(action.bonusQuestion!) && (
-          action.bonusQuestion.answers.map(answer => (
-            <Button key={answer.answer} onClick={() => onAnswer(answer.isCorrect)}>{answer.answer}</Button>
-          ))
-        )}
-        {isSimpleQuestion(action.bonusQuestion!) && (
-          <>
-            <Typography variant="h5">Réponse: {action.bonusQuestion!.answer}</Typography>
-            <Button onClick={() => onAnswer(true)}>Réponse correcte</Button>
-            <Button onClick={() => onAnswer(false)}>Réponse incorrecte</Button>
-          </>
-        )}
-      </Stack>
-    </>
+      </CardContent>
+      <CardActions>
+        <Button variant='outlined' onClick={onCompleteAction}>
+          Completer
+        </Button>
+      </CardActions>
+    </Card>
   )
 }
 
@@ -166,7 +220,7 @@ export function Play() {
   const [score, setScore] = useStickyState<number>(0, "score");
   const [game, setGame] = useState<Game>(defaultGame);
   const [filteredActions, setFilteredActions] = useState<Action[]>(game.actions);
-  const [currentAction, setCurrentAction] = useState<Action>();
+  const [currentAction, setCurrentAction] = useState<Action | null>(null);
   const [answerPopup, setAnswerPopup] = useState("");
   return (
     <>
@@ -175,36 +229,22 @@ export function Play() {
       <Container maxWidth="md">
         <ScoreCard score={score} />
         <ActionFilters game={game} setFilteredActions={setFilteredActions} />
-        <Backdrop
-          open={currentAction !== undefined}
-          sx={{zIndex: 100, backgroundColor: "rgba(0, 0, 0, 0.8)"}}
-        >
-          {currentAction?.bonusQuestion && <QuestionOverlay 
-            action={currentAction!}
-            onAnswer={correct => {
-              setScore(score + calculateScore(currentAction!, correct));
-              setCurrentAction(undefined);
-              setAnswerPopup(correct ? "Correct!" : "Incorrect."); 
-            }}
-          />}
-        </Backdrop>
-        <Backdrop
-          open={answerPopup !== ""}
-          onClick={() => setAnswerPopup("")}
-          sx={{zIndex: 100}}
-        >
-          <Typography variant="h2">{answerPopup}</Typography>
-        </Backdrop>
-        {filteredActions.map(action => (
-          <ActionCard 
-            key={action.id}
-            game={game}
-            action={action}
-            onCompleteAction={() => {
-              action.bonusQuestion ? setCurrentAction(action) : setScore(score + action.points); 
-            }}
-          />
-        ))}
+        <ActionPopup action={currentAction} onQuestionAnswered={(correct) => {
+          setScore(score + calculateScore(currentAction!, correct));
+          setCurrentAction(null);
+        }} />
+        <Box marginTop={4} display='flex' flexWrap="wrap" justifyContent="center" gap={2}>
+          {filteredActions.map(action => (
+            <ActionCard
+              key={action.id}
+              game={game}
+              action={action}
+              onCompleteAction={() => {
+                action.bonusQuestion ? setCurrentAction(action) : setScore(score + action.points); 
+              }}
+            />
+          ))}
+        </Box>
       </Container>
     </>
   )

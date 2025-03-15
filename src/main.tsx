@@ -12,7 +12,7 @@ import { Rules } from './Rules.tsx'
 
 const theme = createTheme({
   palette: {
-    mode: 'light',
+    mode: 'dark',
   },
 })
 
