@@ -1,4 +1,4 @@
-import { Box, Typography } from "@mui/material";
+import { Typography } from "@mui/material";
 import Page from "./components/Page";
 import { HeadingLink } from "./components/NavigationDrawer";
 

@@ -1,4 +1,4 @@
-import { Avatar, Box, Stack, Typography } from "@mui/material";
+import { Box, Stack, Typography } from "@mui/material";
 import { PrintPage } from "./PrintPage";
 import { Action, isGroupAction, isPersonalAction } from "../models/action";
 import { Game } from "../models/game";

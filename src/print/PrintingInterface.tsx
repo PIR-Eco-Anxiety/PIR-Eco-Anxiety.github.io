@@ -1,4 +1,4 @@
-import { Box, Button, createTheme, FormControl, InputLabel, MenuItem, Select, Stack, ThemeProvider } from "@mui/material";
+import { Box, Button, FormControl, InputLabel, MenuItem, Select, Stack } from "@mui/material";
 import { useRef, useState } from "react";
 import GameSourceSelector from "../components/GameSourceSelector";
 import PrintIcon from '@mui/icons-material/Print';

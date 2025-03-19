@@ -1,4 +1,4 @@
-import { Box, BoxProps, createTheme, styled, ThemeProvider } from "@mui/material";
+import { Box, BoxProps, styled } from "@mui/material";
 
 export const PrintPage = styled(Box)<BoxProps>(() => ({
   // 'display': 'none',

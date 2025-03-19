@@ -1,6 +1,6 @@
 import { useState } from "react";
 import GameSourceSelector from "./components/GameSourceSelector";
-import { Backdrop, Box, Button, Card, CardActionArea, CardActions, CardContent, CardMedia, Container, Stack, Typography } from "@mui/material";
+import { Backdrop, Box, Button, Card, CardActions, CardContent, CardMedia, Container, Stack, Typography } from "@mui/material";
 import PersonIcon from '@mui/icons-material/Person';
 import { useStickyState } from "./hooks/stickyState";
 import { Action, calculateScore, isGroupAction, isPersonalAction } from "./models/action";
@@ -8,7 +8,7 @@ import { Game } from "./models/game";
 import defaultGame from "./defaultGame.json";
 import { isMultipleChoiceQuestion, isOpenQuestion, isSimpleQuestion } from "./models/questions";
 import { NullableRefSelector } from "./create/Common";
-import { LocationCity, LocationOn, People } from "@mui/icons-material";
+import { LocationOn, People } from "@mui/icons-material";
 import Page from "./components/Page";
 
 function ScoreCard({score}: {score: number}) {

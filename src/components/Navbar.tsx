@@ -1,14 +1,10 @@
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
-import Typography from '@mui/material/Typography';
-import Menu from '@mui/material/Menu';
 import Container from '@mui/material/Container';
 import Button from '@mui/material/Button';
-import MenuItem from '@mui/material/MenuItem';
-import { useState } from 'react';
 import { IconButton, Link, Stack, styled } from '@mui/material';
-import { Language, Menu as MenuIcon } from '@mui/icons-material';
+import { Menu as MenuIcon } from '@mui/icons-material';
 import { drawerWidth } from './NavigationDrawer';
 import GitHub from '@mui/icons-material/GitHub';
 
@@ -29,16 +25,6 @@ export interface NavBarProps {
 const Offset = styled('div')(({ theme }) => theme.mixins.toolbar);
 
 export function NavBar({ drawer, pages, handleDrawerToggle }: NavBarProps) {
-  const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
-
-
-  const handleOpenLanguageMenu = (event: React.MouseEvent<HTMLButtonElement>) => {
-    setAnchorEl(event.currentTarget);
-  }
-
-  const handleCloseLanguageMenu = () => {
-    setAnchorEl(null);
-  }
 
   return (
     <>
