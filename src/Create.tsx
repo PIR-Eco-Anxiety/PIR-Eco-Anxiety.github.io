@@ -1,7 +1,10 @@
+import Page from "./components/Page";
 import { CreationInterface } from "./create/CreationTable";
 
 export function Create() {
   return (
-    <CreationInterface/>
+    <Page>
+      <CreationInterface/>
+    </Page>
   );
 }

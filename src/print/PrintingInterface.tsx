@@ -6,11 +6,7 @@ import PrintRoleSheet from "./RoleSheet";
 import { Game } from "../models/game";
 import defaultGame from "../defaultGame.json";
 import { useReactToPrint } from "react-to-print";
-import { light } from "@mui/material/styles/createPalette";
-
-const printTheme = createTheme({
-  palette: light
-});
+import Page from "../components/Page";
 
 enum PrintTarget {
   ROLE_SHEET,
@@ -30,11 +26,15 @@ export function Print() {
 
 
   return (
-    <>
-      <Box ref={contentRef}>
-        <ThemeProvider theme={printTheme}>
-          {elementToPrint}
-        </ThemeProvider>
+    <Page>
+      <Box ref={contentRef} sx={{
+        color: 'black',
+        display: 'none',
+        '@media print': {
+          display: 'block',
+        },
+      }}>
+        {elementToPrint}
       </Box>
       <Box displayPrint='none'>
         <Stack spacing={2}>
@@ -64,7 +64,7 @@ export function Print() {
           </Button>
         </Stack>
       </Box>
-    </>
+    </Page>
   );
 }
 

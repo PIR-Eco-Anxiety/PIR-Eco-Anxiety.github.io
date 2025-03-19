@@ -1,7 +1,7 @@
 import { Box, BoxProps, createTheme, styled, ThemeProvider } from "@mui/material";
 
 export const PrintPage = styled(Box)<BoxProps>(() => ({
-  'display': 'none',
+  // 'display': 'none',
   '@media print': {
     'breakAfter': 'page',
     'display': 'block',

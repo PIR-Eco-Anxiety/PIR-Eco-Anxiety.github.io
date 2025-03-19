@@ -9,6 +9,7 @@ import defaultGame from "./defaultGame.json";
 import { isMultipleChoiceQuestion, isOpenQuestion, isSimpleQuestion } from "./models/questions";
 import { NullableRefSelector } from "./create/Common";
 import { LocationCity, LocationOn, People } from "@mui/icons-material";
+import Page from "./components/Page";
 
 function ScoreCard({score}: {score: number}) {
   let photo;
@@ -79,14 +80,25 @@ function ScoreCard({score}: {score: number}) {
 
 
 function QuestionOverlay({action, onAnswer}: {action: Action, onAnswer: (correct: boolean) => void}) {
+  const [correctAnswer, setCorrectAnswer] = useState<boolean>();
+
   return (
     <>
       <Stack spacing={2} direction="column">
         <Typography variant="h4">{action.bonusQuestion!.question}</Typography>
         {isMultipleChoiceQuestion(action.bonusQuestion!) && (
-          action.bonusQuestion.answers.map(answer => (
-            <Button key={answer.answer} onClick={() => onAnswer(answer.isCorrect)}>{answer.answer}</Button>
-          ))
+          <>
+            {correctAnswer === undefined ? action.bonusQuestion.answers.map(answer => (
+              <Button key={answer.answer} onClick={() => setCorrectAnswer(answer.isCorrect)}>
+                {answer.answer}
+              </Button>
+            )) : (
+              <>
+                <Typography variant="h5">{correctAnswer ? "Correct" : "Incorrect"}</Typography>
+                {!correctAnswer && <Typography variant="h5">Réponse: {action.bonusQuestion!.answers.find(answer => answer.isCorrect)!.answer}</Typography>}
+              </>
+            )}
+          </>
         )}
         {isSimpleQuestion(action.bonusQuestion!) && (
           <>
@@ -122,18 +134,25 @@ function ActionOverlay({action, setOkClicked}: {action: Action, setOkClicked: (b
 function ActionPopup({action, onQuestionAnswered}: {action: Action | null, onQuestionAnswered: (correct: boolean) => void}) {
   const [okClicked, setOkClicked] = useState<boolean>(false);
 
+  const handleQuestionAnswered = (correct: boolean) => {
+    setOkClicked(false);
+    onQuestionAnswered(correct);
+  }
+
   return (
     <Backdrop
       open={action !== null}
-      sx={{zIndex: 100, backgroundColor: "rgba(0, 0, 0, 0.8)"}}
+      sx={{zIndex: 100, backgroundColor: "rgba(0, 0, 0, 0.8)", display: "flex", justifyContent: "center", alignItems: "center"}}
     >
-      {action !== null && <>
-        {!okClicked ? (
-          <ActionOverlay action={action} setOkClicked={setOkClicked}/>
-        ) : (
-          <QuestionOverlay action={action} onAnswer={onQuestionAnswered}/>
-        )}
-      </>}
+      <Box maxWidth='md'>
+        {action !== null && <>
+          {!okClicked ? (
+            <ActionOverlay action={action} setOkClicked={setOkClicked}/>
+          ) : (
+            <QuestionOverlay action={action} onAnswer={handleQuestionAnswered}/>
+          )}
+        </>}
+      </Box>
     </Backdrop>
   );
 }
@@ -213,7 +232,7 @@ function ActionCard({game, action, onCompleteAction}: {game: Game, action: Actio
         </Button>
       </CardActions>
     </Card>
-  )
+  );
 }
 
 export function Play() {
@@ -221,9 +240,8 @@ export function Play() {
   const [game, setGame] = useState<Game>(defaultGame);
   const [filteredActions, setFilteredActions] = useState<Action[]>(game.actions);
   const [currentAction, setCurrentAction] = useState<Action | null>(null);
-  const [answerPopup, setAnswerPopup] = useState("");
   return (
-    <>
+    <Page>
       <GameSourceSelector setGame={setGame} />
       <Button onClick={() => setScore(0)}>Reset</Button>
       <Container maxWidth="md">
@@ -246,6 +264,6 @@ export function Play() {
           ))}
         </Box>
       </Container>
-    </>
+    </Page>
   )
 }
