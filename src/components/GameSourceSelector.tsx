@@ -57,9 +57,9 @@ export default function GameSourceSelector({ setGame }: { setGame: (game: Game) 
   return (
     <>
       <FormControl fullWidth>
-        <InputLabel id="game-source-selector-label">Source de la partie</InputLabel>
+        <InputLabel>Source de la partie</InputLabel>
         <Select
-          labelId="game-source-selector-label"
+          label = "Source de la partie"
           id="x"
           variant='outlined'
           value={source}

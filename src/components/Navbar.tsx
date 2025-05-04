@@ -3,8 +3,8 @@ import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
 import Container from '@mui/material/Container';
 import Button from '@mui/material/Button';
-import { IconButton, Link, Stack, styled } from '@mui/material';
-import { Menu as MenuIcon } from '@mui/icons-material';
+import { IconButton, Link, Stack, styled, Tooltip } from '@mui/material';
+import { Description, Menu as MenuIcon } from '@mui/icons-material';
 import { drawerWidth } from './NavigationDrawer';
 import GitHub from '@mui/icons-material/GitHub';
 
@@ -57,6 +57,11 @@ export function NavBar({ drawer, pages, handleDrawerToggle }: NavBarProps) {
               ))}
             </Box>
             <Stack direction="row" spacing={1} sx={{ ml: 'auto' }}>
+            <Tooltip title="Consulter l'article de recherche" arrow>
+              <Link href="/vite.svg" color="inherit" component="a">
+                <Description sx={{ width: 32, height: 32 }}/>
+              </Link>
+            </Tooltip>
             <Link href="https://github.com/PIR-Eco-Anxiety/PIR-Eco-Anxiety.github.io" color='inherit'>
               <GitHub sx={{ width: 32, height: 32 }}/>
             </Link>

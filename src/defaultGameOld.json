@@ -35,12 +35,6 @@
       "name": "Responsable d'usine",
       "description": "Puissant industriel issu du patronat.",
       "color": "purple"
-    },
-    {
-      "id": 6,
-      "name": "Psychologue",
-      "description": "",
-      "color": "#000000"
     }
   ],
   "map": {
@@ -86,13 +80,6 @@
         "description": "Aulnes, bouleaux, platanes, érables, hêtres, etc... ",
         "x": 0,
         "y": 0
-      },
-      {
-        "id": 6,
-        "name": "N'importe où",
-        "description": "Description",
-        "x": 0,
-        "y": 0
       }
     ],
     "adjacencyMatrix": [
@@ -103,8 +90,8 @@
     {
       "id": 0,
       "name": "Ramasser les déchets après le marché.",
-      "points": 10,
-      "description": "Grace à votre enthousiasme, vous parvenez à rassembler des passants et à ramasser plus de 10kg de déchets, ce qui correspond à ce que produit un français en une semaine.",
+      "points": 5,
+      "description": "A la fermeture du marché, on trouve des déchets en tous genres éparpillés sur la place. Vous prenez un quart d'heure pour les jeter dans les poubelles de tri.",
       "playerNumber": 1,
       "bonusQuestion": {
         "question": "Trouvez dans la pièce trois objets qui pourraient être fabriqués à partir de matériaux recyclés."
@@ -115,10 +102,10 @@
       "id": 1,
       "name": "Participer à une manifestation",
       "points": 20,
-      "description": "La manifestation se déroule dans le calme et la bonne humeur. Vous parvenez à échanger avec d'autres manifestants qui plaisantent et vous questionnent sur l'historique de la défense du climat au XXIe siècle.",
+      "description": "En arrivant sur la place du marché, vous vous retrouvez subitement face à une foule brandissant des pancartes bien décorées. Vous intégrez le cortège qui chante \"Ne nous regardez pas, rejoignez nous!\".",
       "playerNumber": 3,
       "bonusQuestion": {
-        "question": "Quelle est la date de la première manifestation de Greta Thunberg devant le parlement suédois ?",
+        "question": "Quelle est la date de la première manifestation de Greta Thunberg devant le parlement suédois?",
         "answer": "2018"
       },
       "locationId": 0
@@ -127,19 +114,15 @@
       "id": 2,
       "name": "Acheter local et bio",
       "points": 5,
-      "description": "En fouillant dans les étalages bio, vous faites une sacré trouvaille...un pâtisson ! Cette petite courge au goût proche de la courgette est aussi surnommée artichaut d'Espagne, bonnet-de-prêtre ou encore bonnet d'électeur.",
+      "description": "Vous entrez fièrement dans le magasin bio et achetez une panoplie de fruits et légumes locaux, bio, et de saison. C'est bon pour le corps et l'environnement!",
       "playerNumber": 1,
-      "locationId": 0,
-      "bonusQuestion": {
-        "question": "Citez 3 magasins dédiés au bio.",
-        "answer": "Biocoop, Sobio, Le Grand Panier Bio, …"
-      }
+      "locationId": 0
     },
     {
       "id": 3,
       "name": "Rapporter son Tupperware™ au marché.",
       "points": 5,
-      "description": "Armé.e de vos bocaux et vos sacs en tissu, vous raflez tout le stand libanais, de quoi se régaler ce soir.",
+      "description": "Pour éviter l'utilisation de récipients à usage unique, vous choisissez d'apporter votre Tupperware pour votre déjeuner.",
       "playerNumber": 1,
       "locationId": 0,
       "bonusQuestion": {
@@ -150,7 +133,7 @@
     {
       "id": 4,
       "name": "Organiser une conférence",
-      "description": "C'est la première conférence que vous organisez et quelle réussite ! Vous parvenez à faire échanger une spécialiste de l'extraction minière et une industrielle fabriquant des téléphones. Les débats sont riches et le public est ravi !",
+      "description": "En tant que climatologue-biologiste-océanologue-psychologue-anthropologue-podologue-enseignant-chercheur (et excellent orateur), vous profitez du bon temps pour faire une conférence sur l'environnement et le développement durable.",
       "points": 15,
       "bonusQuestion": {
         "question": "Quels thèmes aimerais-tu voir aborder dans une conférence sur l’environnement ?"
@@ -160,8 +143,8 @@
     },
     {
       "id": 5,
-      "name": "Faire installer des poubelles de recyclage décorées",
-      "description": "Les élèves colorent les poubelles couleur arc-en-ciel - ou power rangers - selon leur point de vue. En tout cas ça plaît aux habitants de la commune.",
+      "name": "Faire installer des poubelles de recyclage.",
+      "description": "L'élu fait installer des poubelles de tri à côté de chaque poubelle classique existante, et le.a journaliste en profite pour faire une campagne de sensibilisation et de promotion.",
       "points": 15,
       "bonusQuestion": {
         "question": "Quel est l’objectif de taux de recyclage des déchets non minéraux fixé par la France pour 2025 ?",
@@ -182,15 +165,14 @@
       },
       "roleIds": [
         2,
-        0,
-        5
+        4
       ],
       "locationId": 1
     },
     {
       "id": 6,
       "name": "Faire voter une loi de protection pour l'environnement",
-      "description": "Vous votez une loi de réduction de la vitesse sur autoroute à 110km/h, bravo ! Elle profite à la planète et aux oreilles des riverains.",
+      "description": "...",
       "points": 10,
       "bonusQuestion": {
         "question": "De quand date la loi “Climat et Résilience” qui a pour objectif de réduire les émissions de gaz à effet de serre de 40% d'ici 2030 ?",
@@ -215,7 +197,7 @@
     {
       "id": 7,
       "name": "Etre transparent sur les mesures prises à la mairie",
-      "description": "Vous créez une rubrique dans la gazette locale, \"mair-initiative\", ça sonne bien non ?",
+      "description": "",
       "points": 10,
       "bonusQuestion": {
         "question": "En France, quel délai les mairies doivent respecter pour publier le compte rendu d’une séance du conseil municipal ?",
@@ -248,7 +230,7 @@
       "id": 8,
       "name": "Assister à une consultation citoyenne",
       "points": 15,
-      "description": "Les débats sont riches et les élus prennent en compte l'avis des citoyens pour rectifier la loi.",
+      "description": "",
       "playerNumber": 2,
       "locationId": 1,
       "bonusQuestion": {
@@ -522,70 +504,6 @@
       "locationId": 5,
       "bonusQuestion": {
         "question": "Vous avez 10 secondes pour citer 3 éléments dans la salle qui peuvent être réalisé en matériau recyclés."
-      }
-    },
-    {
-      "id": 26,
-      "name": "Distribuer des nouvelles positives sur l'environnement",
-      "description": "Vos bonnes nouvelles donnent le sourire, félicitations ! Les passants repartagent tout à leurs proches.",
-      "points": 10,
-      "bonusQuestion": {
-        "question": "Partages aux autres joueur.euse.s une bonne nouvelle qui te fait plaisir."
-      },
-      "roleIds": [
-        4,
-        2,
-        6
-      ],
-      "locationId": 0
-    },
-    {
-      "id": 27,
-      "name": "Créer un espace de discussion libre autour de l'éco-anxiété",
-      "description": "Vous installez quelques chaises autour d'un banc et invitez les habitants à prendre le temps de discuter avec vous de sujets qui les touchent.",
-      "points": 15,
-      "roleId": 6,
-      "locationId": 0
-    },
-    {
-      "id": 28,
-      "name": "Déposer des tracts informatifs en accès libre sur la COP",
-      "points": 5,
-      "description": "Il est autorisé de déposer des tracts informatifs en accès libre mais cela doit être occasionnel et vous devez ensuite nettoyer l'espace de votre dépôt.",
-      "playerNumber": 1,
-      "locationId": 1,
-      "bonusQuestion": {
-        "question": "Quels sont les mots associés à l’acronyme “COP” ?",
-        "answer": "Conférence des parties"
-      }
-    },
-    {
-      "id": 29,
-      "name": "Se renseigner auprès de la mairie pour savoir comment créer une association environnementale dans la ville",
-      "points": 10,
-      "description": "Ni une, ni deux, vous vous lancez ! Ca y est votre association est créée et vous tenez votre première assemblée générale. Mais d'ailleurs, comment s'appelle-t-elle ?",
-      "playerNumber": 2,
-      "locationId": 1,
-      "bonusQuestion": {
-        "question": "En quelle année a été créée l’association Greenpeace ?",
-        "answers": [
-          {
-            "answer": "1953",
-            "isCorrect": false
-          },
-          {
-            "answer": "1971",
-            "isCorrect": true
-          },
-          {
-            "answer": "1992",
-            "isCorrect": false
-          },
-          {
-            "answer": "2003",
-            "isCorrect": false
-          }
-        ]
       }
     }
   ],

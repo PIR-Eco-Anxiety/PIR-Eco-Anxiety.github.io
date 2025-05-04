@@ -22,9 +22,19 @@ interface CreationTabProps<T> {
 }
 
 function CreationTab<T>({title, items, setItems, defaultItem, getElement}: CreationTabProps<T>) {
+  // const [filteredItems, setFilteredItems] = useState<T[]>(items);
+
   return (
     <>
       <Typography variant='h4'>{title}</Typography>
+      {/* {(defaultItem as Action).points !== undefined && (
+        <ActionFilters
+          game={{actions: items as Action[], map: {locations: [], adjacencyMatrix: [[]]}, events: [], roles: []}}
+          setFilteredActions={(filteredActions) => {
+            setItems(filteredActions as T[]);
+          }}
+        />
+      )} */}
       <Stack spacing={2}>
         {items.map((element, index) => (
           getElement(element, index, (element: T) => {

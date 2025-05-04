@@ -4,11 +4,16 @@ import Home from './Home.tsx'
 import { createTheme, CssBaseline, LinkProps, responsiveFontSizes, ThemeProvider } from '@mui/material'
 import { HashRouter, Routes, Route, LinkProps as RouterLinkProps } from 'react-router'
 import { HashLink as RouterLink } from 'react-router-hash-link'
-import { Play } from './Play.tsx'
+import PlayStart from './play/PlayStart.tsx'
 import { Create } from './Create.tsx'
 import { Print } from './print/PrintingInterface.tsx'
 import { Rules } from './Rules.tsx'
 import React from 'react'
+import { green } from '@mui/material/colors'
+import '@fontsource/roboto/300.css';
+import '@fontsource/roboto/400.css';
+import '@fontsource/roboto/500.css';
+import '@fontsource/roboto/700.css';
 
 const LinkBehavior = React.forwardRef<
   HTMLAnchorElement,
@@ -58,8 +63,16 @@ let theme = createTheme({
     }
   },
   colorSchemes: {
-    // light: true,
-    dark: true
+    light: true,
+    // dark: true
+  },
+  palette: {
+    primary: {
+      main: green[600],
+    },
+    background: {
+      paper: green[50],
+    }
   }
 })
 
@@ -69,7 +82,7 @@ theme = responsiveFontSizes(theme, {
 
 export const pages = [
   { name: 'Acceuil', path: '/', element: <Home />, description: "Retourner à l'acceuil" },
-  { name: 'Jouer', path: '/play', element: <Play />, description: "Commencer une partie" },
+  { name: 'Jouer', path: '/play', element: <PlayStart />, description: "Commencer une partie" },
   { name: 'Créer', path: '/create', element: <Create />, description: "Créez un scénario" },
   { name: 'Imprimer', path: '/print', element: <Print />, description: "Imprimez le support physique" },
   { name: 'Règles', path: '/rules', element: <Rules />, description: "Lire les règles du jeu" },

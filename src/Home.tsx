@@ -1,3 +1,4 @@
+import { Container, Typography } from '@mui/material';
 import { ChoicePrompt } from './components/ChoicePrompt';
 import Page from './components/Page';
 import { pages } from './main';
@@ -12,7 +13,15 @@ function Home() {
 
   return (
     <Page>
-      <ChoicePrompt prompt='Choisissez une option' options={options}/>
+      <Container maxWidth='md' sx={{ textAlign: 'center', marginBottom: 2 }}>
+        <Typography variant='h2' component='h1' gutterBottom>
+          Res'PIR
+        </Typography>
+        <Typography gutterBottom variant='h4' component='p'>
+          Le jeu sérieux pour soulager l'éco-anxiété !
+        </Typography>
+        <ChoicePrompt prompt='' options={options}/>
+      </Container>
     </Page>
   );
 }

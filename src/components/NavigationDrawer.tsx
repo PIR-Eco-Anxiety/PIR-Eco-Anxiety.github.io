@@ -45,7 +45,7 @@ function NavigationDrawerContents({ headings, setMobileOpen }: {headings: Headin
       <List
         subheader={
           <ListSubheader component="div">
-            Contents
+            Contenu
           </ListSubheader>
         }
         sx={{
