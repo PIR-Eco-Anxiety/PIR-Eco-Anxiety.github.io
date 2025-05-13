@@ -1,10 +1,11 @@
-import { Stack, Typography, Button, Backdrop, Box } from "@mui/material";
+import { Stack, Typography, Button, Backdrop, Box, Link } from "@mui/material";
 import { useState } from "react";
 import { Action } from "../models/action";
 import { isMultipleChoiceQuestion, isSimpleQuestion, isOpenQuestion } from "../models/questions";
 
 export function QuestionOverlay({action, onAnswer}: {action: Action, onAnswer: (correct: boolean) => void}) {
   const [correctAnswer, setCorrectAnswer] = useState<boolean>();
+  const [answered, setAnswered] = useState<boolean>(false);
 
   return (
     <>
@@ -13,13 +14,15 @@ export function QuestionOverlay({action, onAnswer}: {action: Action, onAnswer: (
         <Typography>{action.bonusQuestion!.question}</Typography>
         {isMultipleChoiceQuestion(action.bonusQuestion!) && (
           <>
-            {correctAnswer === undefined ? action.bonusQuestion.answers.map(answer => (
+            {correctAnswer === undefined ? (
               <Box display="flex" flexDirection="row" gap={2} alignItems="center">
-                <Button variant="contained" key={answer.answer} onClick={() => setCorrectAnswer(answer.isCorrect)}>
-                  {answer.answer}
-                </Button>
+                {action.bonusQuestion.answers.map(answer => (
+                  <Button variant="contained" key={answer.answer} onClick={() => setCorrectAnswer(answer.isCorrect)}>
+                    {answer.answer}
+                  </Button>
+                ))}
               </Box>
-            )) : (
+            ) : (
               <>
                 <Typography variant="h5">
                   {correctAnswer ? "Correct." : "Incorrect. "}
@@ -32,11 +35,17 @@ export function QuestionOverlay({action, onAnswer}: {action: Action, onAnswer: (
         )}
         {isSimpleQuestion(action.bonusQuestion!) && (
           <>
-            <Typography variant="h5">Réponse: {action.bonusQuestion!.answer}</Typography>
-            <Stack direction="row" spacing={2}>
-              <Button variant="contained" onClick={() => onAnswer(true)}>Réponse correcte</Button>
-              <Button variant="outlined" onClick={() => onAnswer(false)}>Réponse incorrecte</Button>
-            </Stack>
+            {!answered ? (
+              <Button variant="contained" onClick={() => setAnswered(true)}>Voir la réponse</Button>
+            ) : (
+              <>
+                <Typography variant="h5">Réponse: {action.bonusQuestion!.answer}</Typography>
+                <Stack direction="row" spacing={2}>
+                  <Button variant="contained" onClick={() => onAnswer(true)}>Réponse correcte</Button>
+                  <Button variant="outlined" onClick={() => onAnswer(false)}>Réponse incorrecte</Button>
+                </Stack>
+              </>
+            )}
           </>
         )}
         {isOpenQuestion(action.bonusQuestion!) && (
@@ -46,6 +55,11 @@ export function QuestionOverlay({action, onAnswer}: {action: Action, onAnswer: (
               <Button variant="outlined" onClick={() => onAnswer(false)}>Réponse pas acceptée</Button>
             </Stack>
           </>
+        )}
+        {action.bonusQuestion?.source && (
+          <Typography variant="body2" textAlign="center">
+            <Link href={action.bonusQuestion.source} target="_blank" rel="noopener noreferrer">Source</Link>
+          </Typography>
         )}
       </Stack>
     </>

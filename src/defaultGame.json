@@ -3,43 +3,43 @@
     {
       "id": 0,
       "name": "Elève",
-      "description": "Jeune esprit modelable, a faim de connaissances.",
+      "description": "Rencontres, sorties de découvertes, cours, ateliers,… vos journées sont bien remplies et vous ne voyez pas le temps passer. Étudier dans une petite ville vous permet d’élargir vos connaissances et de vous engager dans des projets qui vous tiennent à cœur. ",
       "color": "red"
     },
     {
       "id": 1,
       "name": "Professeur",
-      "description": "Grand sage, éducateur de l'élève, connait à peu près tout.",
+      "description": "Votre mutation dans une petite ville s’est révélée être un franc succès. Jardinage dans le potager de l’établissement scolaire, intervention et cours thématiques, vous pouvez enfin mettre en place tous les projets dont vous rêviez pour faire découvrir aux élèves la beauté de la nature. ",
       "color": "blue"
     },
     {
       "id": 2,
-      "name": "Elu",
-      "description": "Représente l'électorat. A voté!",
+      "name": "Elue",
+      "description": "Née dans une petite ville, vous avez décidé de vous y engager pour aider à en faire un lieu de vie agréable pour tous. Événements, décrets, consultations,... vous multipliez les initiatives pour impliquer les habitant.es et les acteur.rices de votre territoire. ",
       "color": "yellow"
     },
     {
       "id": 3,
       "name": "Scientifique",
-      "description": "Adepte de la méthode hypothético-déductive.",
+      "description": "Vous avez été invité dans une petite ville pour une conférence, et vous n’en êtes jamais reparti. Le cadre tranquille et proche de la nature est idéal pour mener vos recherches et les habitant.es sont toujours prêt.es à discuter de votre travail. ",
       "color": "green"
     },
     {
       "id": 4,
       "name": "Journaliste",
-      "description": "\"Un politicien qui se plaint des journalistes, c'est comme un poisson qui se plaint de l'eau.\"\n- Jean Charest",
+      "description": "Vous travaillez pour le journal local et y racontez tout ce qui se passe dans votre petite ville. Inspirée par les actions de vos concitoyen.nes, vous écrivez des articles qui présentent les meilleures initiatives et invitez les habitant.es à participer pour faire entendre leur voix. ",
       "color": "red"
     },
     {
       "id": 5,
       "name": "Responsable d'usine",
-      "description": "Puissant industriel issu du patronat.",
+      "description": "Vous avez repris la tête de l’usine, et vous êtes bien décidée à mettre en place tous les changements nécessaires pour réduire son impact environnemental. Actrice importante d’emploi pour votre petite ville, vous tenez aussi à améliorer les conditions de travail de vos employé.es.",
       "color": "purple"
     },
     {
       "id": 6,
       "name": "Psychologue",
-      "description": "",
+      "description": "Après vos études, vous posez vos bagages dans une petite ville. Vous y découvrez des habitant.es engagé.es, toujours partant.es pour discuter. Invité par les acteurs.rices locaux, vous échangez pour améliorer le bien être des habitant.es et votre podcast a un grand succès.",
       "color": "#000000"
     }
   ],
@@ -107,7 +107,8 @@
       "description": "Grace à votre enthousiasme, vous parvenez à rassembler des passants et à ramasser plus de 10kg de déchets, ce qui correspond à ce que produit un français en une semaine.",
       "playerNumber": 1,
       "bonusQuestion": {
-        "question": "Trouvez dans la pièce trois objets qui pourraient être fabriqués à partir de matériaux recyclés."
+        "question": "Trouvez dans la pièce trois objets qui pourraient être fabriqués à partir de matériaux recyclés.",
+        "source": "https://www.statistiques.developpement-durable.gouv.fr/la-production-et-le-recyclage-des-dechets-en-2020-et-2021-en-france-synthese-des-connaissances-en"
       },
       "locationId": 0
     },
@@ -119,7 +120,8 @@
       "playerNumber": 3,
       "bonusQuestion": {
         "question": "Quelle est la date de la première manifestation de Greta Thunberg devant le parlement suédois ?",
-        "answer": "2018"
+        "answer": "2018",
+        "source": "http://archive.today/2024.05.02-083603/https://www.newyorker.com/news/our-columnists/the-fifteen-year-old-climate-activist-who-is-demanding-a-new-kind-of-politics"
       },
       "locationId": 0
     },
@@ -132,7 +134,8 @@
       "locationId": 0,
       "bonusQuestion": {
         "question": "Citez 3 magasins dédiés au bio.",
-        "answer": "Biocoop, Sobio, Le Grand Panier Bio, …"
+        "answer": "Biocoop, Sobio, Le Grand Panier Bio, …",
+        "source": "https://www.haute-garonne.fr/directfermiers31"
       }
     },
     {
@@ -143,15 +146,16 @@
       "playerNumber": 1,
       "locationId": 0,
       "bonusQuestion": {
-        "question": "Quand est-ce que la production d'emballages ou de sacs fabriqués à partir de plastique oxodégradable a été interdite en France ?",
-        "answer": "1er Janvier 2022"
+        "question": "Depuis quand les sacs de caisse en matières plastiques à usage unique sont interdits ?",
+        "answer": "2016",
+        "source": "https://www.economie.gouv.fr/cedef/fiches-pratiques/interdiction-du-plastique-usage-unique-quels-produits-sont-concernes"
       }
     },
     {
       "id": 4,
       "name": "Organiser une conférence",
       "description": "C'est la première conférence que vous organisez et quelle réussite ! Vous parvenez à faire échanger une spécialiste de l'extraction minière et une industrielle fabriquant des téléphones. Les débats sont riches et le public est ravi !",
-      "points": 15,
+      "points": 10,
       "bonusQuestion": {
         "question": "Quels thèmes aimerais-tu voir aborder dans une conférence sur l’environnement ?"
       },
@@ -162,7 +166,7 @@
       "id": 5,
       "name": "Faire installer des poubelles de recyclage décorées",
       "description": "Les élèves colorent les poubelles couleur arc-en-ciel - ou power rangers - selon leur point de vue. En tout cas ça plaît aux habitants de la commune.",
-      "points": 15,
+      "points": 8,
       "bonusQuestion": {
         "question": "Quel est l’objectif de taux de recyclage des déchets non minéraux fixé par la France pour 2025 ?",
         "answers": [
@@ -178,7 +182,8 @@
             "answer": "75%",
             "isCorrect": false
           }
-        ]
+        ],
+        "source": "https://www.statistiques.developpement-durable.gouv.fr/la-production-et-le-recyclage-des-dechets-en-france-extrait-du-bilan-environnemental-2024"
       },
       "roleIds": [
         2,
@@ -191,7 +196,7 @@
       "id": 6,
       "name": "Faire voter une loi de protection pour l'environnement",
       "description": "Vous votez une loi de réduction de la vitesse sur autoroute à 110km/h, bravo ! Elle profite à la planète et aux oreilles des riverains.",
-      "points": 10,
+      "points": 15,
       "bonusQuestion": {
         "question": "De quand date la loi “Climat et Résilience” qui a pour objectif de réduire les émissions de gaz à effet de serre de 40% d'ici 2030 ?",
         "answers": [
@@ -207,7 +212,8 @@
             "answer": "2023",
             "isCorrect": false
           }
-        ]
+        ],
+        "source": "https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000043956924"
       },
       "roleId": 2,
       "locationId": 1
@@ -236,7 +242,8 @@
             "answer": "1 mois",
             "isCorrect": false
           }
-        ]
+        ],
+        "source": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000006070633/LEGISCTA000006180960/"
       },
       "roleIds": [
         2,
@@ -252,18 +259,19 @@
       "playerNumber": 2,
       "locationId": 1,
       "bonusQuestion": {
-        "question": "Qu'est ce qu'une consultation citoyenne?",
-        "answer": "Je sais pas non plus désolé."
+        "question": "Comment décririez-vous une participation citoyenne ?",
+        "source": "https://www.modernisation.gouv.fr/associer-les-citoyens/quest-ce-que-la-participation-citoyenne"
       }
     },
     {
       "id": 9,
       "name": "Interviewer un.e climatologue",
-      "description": "...",
+      "description": "Votre interview a rencontré un franc succès ! Les habitants ont appris plein de choses sur le climat, et en demandent plus.",
       "points": 15,
       "bonusQuestion": {
         "question": "Combien y a t'il de couches atmosphériques?",
-        "answer": "4"
+        "answer": "5",
+        "source": "https://www.meteosuisse.admin.ch/portrait/meteosuisse-blog/fr/2023/05/wie-ist-die-atmosphaere-aufgebaut.html"
       },
       "roleIds": [
         4,
@@ -274,8 +282,8 @@
     {
       "id": 10,
       "name": "Utiliser du papier recyclé",
-      "description": "...",
-      "points": 5,
+      "description": "Après des semaines de travail acharné, vous l'avez fait ! Votre premier journal imprimé en papier recyclé... Il y a de quoi être fier...",
+      "points": 10,
       "bonusQuestion": {
         "question": "Quel est le pourcentage de papier acheté par des éditeurs qui est recyclé (certifié PEFC, FSC ou recyclé) ?",
         "answers": [
@@ -291,7 +299,8 @@
             "answer": "98%",
             "isCorrect": true
           }
-        ]
+        ],
+        "source": "https://www.sne.fr/actu/98-du-papier-achete-par-les-editeurs-de-livres-est-certifie-ou-recycle-en-2021/"
       },
       "roleId": 4,
       "locationId": 2
@@ -299,10 +308,11 @@
     {
       "id": 11,
       "name": "Mettre en avant les fruits et légumes de saison dans le journal",
-      "description": "...",
-      "points": 10,
+      "description": "Des courges en hiver, des prunes en automne, des asperges au printemps, des fraises en été, vous redoublez d'imagination pour proposer des recettes de saison à vos lecteurs.",
+      "points": 5,
       "bonusQuestion": {
-        "question": "Citez 3 fruits ou légumes de saison."
+        "question": "Citez 3 fruits ou légumes de saison.",
+        "source": "https://www.haute-garonne.fr/directfermiers31"
       },
       "roleId": 4,
       "locationId": 2
@@ -310,19 +320,20 @@
     {
       "id": 12,
       "name": "S'intéresser aux actualités locales",
-      "points": 10,
-      "description": "...",
+      "points": 5,
+      "description": "Vous découvrez que votre région n'est pas si déserte que ça... Des concerts caritatifs, des meetings avec des personnalités publiques, que de choses qui se passent à proximité de votre petit village...",
       "playerNumber": 1,
       "locationId": 2,
       "bonusQuestion": {
-        "question": "Citez une actualité locale positive de la dernière semaine."
+        "question": "Citez une actualité locale positive de la dernière semaine.",
+        "source": "https://lemediapositif.com/"
       }
     },
     {
       "id": 13,
       "name": "Proposer un article pour la page tribune libre du journal",
       "points": 5,
-      "description": "Description",
+      "description": "La gazette locale vous propose de vous exprimer, et vous sautez sur l'occasion ! Vous avez tellement d'expérience à partager...",
       "playerNumber": 1,
       "locationId": 2,
       "bonusQuestion": {
@@ -332,24 +343,25 @@
     {
       "id": 14,
       "name": "Avoir une bonne gestion des déchets",
-      "description": "Description",
+      "description": "C'était déjà bien organisé, là c'est parfait ! Verre, papier, gravats, vous ne manquez plus rien ! Cette usine est proche du zéro-déchet et vous pouvez en être fière.",
       "points": 10,
       "bonusQuestion": {
-        "question": "En France, les déchets minéraux (construction) sont recyclés à cb de % ?",
+        "question": " - En France, les déchets dangereux (risque santé, nécessite traitement) sont recyclés à cb de % ?",
         "answers": [
           {
-            "answer": "65%",
+            "answer": "5%",
             "isCorrect": false
           },
           {
-            "answer": "75%",
+            "answer": "20%",
+            "isCorrect": false
+          },
+          {
+            "answer": "30%",
             "isCorrect": true
-          },
-          {
-            "answer": "80%",
-            "isCorrect": false
           }
-        ]
+        ],
+        "source": "https://www.statistiques.developpement-durable.gouv.fr/la-production-et-le-recyclage-des-dechets-en-france-extrait-du-bilan-environnemental-2024"
       },
       "roleId": 5,
       "locationId": 3
@@ -357,11 +369,25 @@
     {
       "id": 15,
       "name": "Utiliser l'électricité de manière optimale",
-      "description": "Description",
-      "points": 10,
+      "description": "C'est pas Versailles ici ! Belle optimisation et super communication, et fini les lumières allumées et les machines qui tournent à vide.",
+      "points": 5,
       "bonusQuestion": {
-        "question": "Quelles mesures peuvent-elles être mises en place (donnez 1 ou 2 idées) ?",
-        "answer": "installation de détecteurs de présence, programmation de l'extinction automatique des éclairages en dehors des heures de travail, etc."
+        "question": "En moyenne,  le mode \"Eco\" des appareils électroménagers permet d'économiser quel pourcentage d'électricité ?",
+        "answers": [
+          {
+            "answer": "15%",
+            "isCorrect": false
+          },
+          {
+            "answer": "25%",
+            "isCorrect": false
+          },
+          {
+            "answer": "40%",
+            "isCorrect": true
+          }
+        ],
+        "source": "https://agirpourlatransition.ademe.fr/particuliers/maison/economies-denergie-deau/20-solutions-reduire-consommation-delectricite"
       },
       "roleId": 5,
       "locationId": 3
@@ -369,10 +395,11 @@
     {
       "id": 16,
       "name": "Travailler sur des solutions low-tech",
-      "description": "Description",
-      "points": 20,
+      "description": "La Low-Tech est une vision de la technologie différente de la High-Tech. Elle considère les notions de réparabilité, sobriété, faible émission et convivialité, entre autres.",
+      "points": 15,
       "bonusQuestion": {
-        "question": "Donner un exemple de solution low-tech."
+        "question": "Donner un exemple de solution low-tech. Pour vous aider, une boulangerie fonctionnant avec un four solaire est un bon exemple.",
+        "source": "https://lowtechlab.org/fr/la-low-tech"
       },
       "roleIds": [
         3,
@@ -383,8 +410,8 @@
     {
       "id": 17,
       "name": "Travailler sur une certification environnementale",
-      "description": "Description",
-      "points": 20,
+      "description": "Une certification, mais pour quoi faire ? Vous souhaitez faire reconnaître vos efforts récents et partager vos succès avec les habitants de la ville. Ils vous reconnaissent comme un employeur prenant soin de son lieu de travail et de ses employés.",
+      "points": 10,
       "bonusQuestion": {
         "question": "A quoi correspond la norme ISO 14001 ?",
         "answers": [
@@ -400,7 +427,8 @@
             "answer": "les organismes démontrent qu’ils remplissent des critères environnementales mais aussi sociétales et économiques",
             "isCorrect": false
           }
-        ]
+        ],
+        "source": "https://certification.afnor.org/en/environnement/iso-14001-environmental-management-systems"
       },
       "roleIds": [
         2,
@@ -410,12 +438,13 @@
     },
     {
       "id": 18,
-      "name": "Organiser un cours",
-      "description": "Sans les élèves askip",
+      "name": "Organiser un cours thématique sur l'environnement",
+      "description": "Un cours est un bon moyen de sensibiliser vos éléves et d'ouvrir la discution. En choisisant un sujet qui vous passionne, il est encore plus agréable à preparer !",
       "points": 10,
       "bonusQuestion": {
         "question": "Quel est le pourcentage des cours de SVT au lycée lié à l’environnement (thématique Enjeux contemporains de la planète)",
-        "answer": "30%"
+        "answer": "30%",
+        "source": "https://www.education.gouv.fr/sites/default/files/imported_files/documents/bulletin_officiel_special_9_30-09-10_155297.pdf?utm_source=chatgpt.com"
       },
       "roleId": 1,
       "locationId": 4
@@ -423,7 +452,7 @@
     {
       "id": 19,
       "name": "Ne pas imprimer automatiquement tous les cours",
-      "description": "Description",
+      "description": "Les élèves sont ravis, moins de papier à trier, les classeurs sont plus faciles à entretenir ! Seul bémol, il faut davantage écrire... mais ce n'est pas grave, cela fait travailler l'orthographe et la grammaire !",
       "points": 5,
       "bonusQuestion": {
         "question": "Combien de feuilles de papier produit un arbre moyen ?",
@@ -444,18 +473,20 @@
             "answer": "25000",
             "isCorrect": false
           }
-        ]
+        ],
+        "source": "https://www.itesoft.com/fr/blog/impact-ecologique-traitement-factures-papier/#:~:text=Commen%C3%A7ons%20au%20tout%20d%C3%A9but%20du,Une%20ramette%20comporte%20500%20feuilles."
       },
       "roleId": 1,
       "locationId": 4
     },
     {
       "id": 20,
-      "name": "Faire des atelier artistique (poésie)",
-      "description": "Description",
+      "name": "Faire des ateliers artistiques autour de l'environnement (poésie)",
+      "description": "Votre activité a eu un franc succès ! Les élèves ont pu exprimer leurs préoccupations au travers de l'art. Tout s'est déroulé dans la joie et la bonne humeur.",
       "points": 15,
       "bonusQuestion": {
-        "question": "Composer un Haïku (poème japonais sur la nature, 5-7-5 syllabes) "
+        "question": "Composer un Haïku (poème japonais sur la nature, 5-7-5 syllabes) ",
+        "source": "https://www-tandfonline-com.gorgone.univ-toulouse.fr/doi/full/10.1080/08893675.2023.2203833"
       },
       "roleIds": [
         0,
@@ -466,10 +497,11 @@
     {
       "id": 21,
       "name": "Elire un éco-delegué",
-      "description": "Description",
+      "description": "Au terme de longues discussions et débats, vous avez été élu éco-délégué de votre classe. Vous êtes déjà prêts à motiver les troupes pour des initiatives éco-responsables au sein de l'école. Un jardin partagé, une cantine aux produits bio et locaux, vous ne reculerez devant rien.",
       "points": 5,
       "bonusQuestion": {
-        "question": "Si vous pouviez faire appliquer une mesure dans votre lieu d'études/de travail, laquelle serait-elle et pourquoi ?"
+        "question": "Si vous pouviez faire appliquer une mesure dans votre lieu d'études/de travail, laquelle serait-elle et pourquoi ?",
+        "source": "https://www.education.gouv.fr/des-eleves-eco-delegues-engages-pour-la-transition-ecologique-et-le-developpement-durable-10835"
       },
       "roleId": 0,
       "locationId": 4
@@ -477,11 +509,12 @@
     {
       "id": 22,
       "name": "Sortie découverte des plantes",
-      "description": "Description",
-      "points": 0,
+      "description": "Une mélitte ? Une anémone ? Un galéopsis des champs ? Que sont ces plantes étranges dont vous n'avez jamais entendu parler ? Grâce à cette sortie en forêt vous avez découvert de nombreuses choses que vous avez hâte de partager avec vos proches ! ",
+      "points": 20,
       "bonusQuestion": {
         "question": "Quel pays pionnier de la sylvothérapie (et ayant nommé la pratique) recense plusieurs millions de pratiquants de thérapie forestière chaque année ?",
-        "answer": "Le Japon"
+        "answer": "Le Japon",
+        "source": "https://archive.wikiwix.com/cache/index2.php?url=https%3A%2F%2Fpubmed.ncbi.nlm.nih.gov%2F19568835%2F#federation=archive.wikiwix.com&tab=url"
       },
       "roleIds": [
         3,
@@ -493,11 +526,12 @@
     {
       "id": 23,
       "name": "Planter des arbres",
-      "description": "Description",
+      "description": "Au cours d'une longue journée de labeur, vous avez planté 2 arbres, 3 buissons et un parterre de fleurs... Vous avez hâte de voir le résultat !",
       "points": 10,
       "bonusQuestion": {
         "question": "Combien d’arbres sont plantés dans le monde chaque année ?",
-        "answer": "Environ 1 milliard."
+        "answer": "Environ 1 milliard.",
+        "source": "https://www.planetoscope.com/forets/1817-plantation-d-arbres-dans-le-monde.html"
       },
       "roleId": 0,
       "locationId": 5
@@ -505,23 +539,25 @@
     {
       "id": 24,
       "name": "Se promener en respectant les sentiers",
-      "points": 10,
-      "description": "...",
+      "points": 5,
+      "description": "Saviez-vous qu'il est important de rester sur les sentier lorsque tu te promène dans la nature pour proteger la faune, la flore et ne pas aggraver l'érosion des sols ! \"Rester sur les sentiers sans prendre des raccourcis impromptus préservera les biotopes sensibles des montagne en réduisant le piétinement de la flore.\" (Citation site federation francais de randonnée)",
       "playerNumber": 1,
       "locationId": 5,
       "bonusQuestion": {
-        "question": "Nomme trois espaces naturels où tu aimes te promener."
+        "question": "Nomme trois espaces naturels où tu aimes te promener.",
+        "source": "https://www.ffrandonnee.fr/randonner/conseils/limiter-son-impact-dans-la-nature-en-randonnee"
       }
     },
     {
       "id": 25,
       "name": "Ramasser les déchets",
       "points": 10,
-      "description": "Description",
+      "description": "Vous êtes révoltés par tous ces promeneurs qui balancent mouchoirs et mégôts dans la forêt ! Heureusement, grâce à votre super initiative, vous avez ramassé de nombreux déchets. La forêt est bien plus belle ainsi....",
       "playerNumber": 1,
       "locationId": 5,
       "bonusQuestion": {
-        "question": "Vous avez 10 secondes pour citer 3 éléments dans la salle qui peuvent être réalisé en matériau recyclés."
+        "question": "Vous avez 10 secondes pour citer 3 éléments dans la salle qui peuvent être réalisés en matériau recyclés.",
+        "source": "https://www.statistiques.developpement-durable.gouv.fr/la-production-et-le-recyclage-des-dechets-en-2020-et-2021-en-france-synthese-des-connaissances-en"
       }
     },
     {
@@ -530,7 +566,8 @@
       "description": "Vos bonnes nouvelles donnent le sourire, félicitations ! Les passants repartagent tout à leurs proches.",
       "points": 10,
       "bonusQuestion": {
-        "question": "Partages aux autres joueur.euse.s une bonne nouvelle qui te fait plaisir."
+        "question": "Partage aux autres joueur.euse.s une bonne nouvelle qui te fait plaisir.",
+        "source": "https://lemediapositif.com/"
       },
       "roleIds": [
         4,
@@ -540,24 +577,17 @@
       "locationId": 0
     },
     {
-      "id": 27,
-      "name": "Créer un espace de discussion libre autour de l'éco-anxiété",
-      "description": "Vous installez quelques chaises autour d'un banc et invitez les habitants à prendre le temps de discuter avec vous de sujets qui les touchent.",
-      "points": 15,
-      "roleId": 6,
-      "locationId": 0
-    },
-    {
       "id": 28,
       "name": "Déposer des tracts informatifs en accès libre sur la COP",
+      "description": "Il est autorisé de déposer des tracts informatifs en accès libre de manière occasionnelle. Les vôtres ont le bon goût d'être bien rédigés et très informatifs. Vous nettoyez ensuite l'espace de votre dépôt",
       "points": 5,
-      "description": "Il est autorisé de déposer des tracts informatifs en accès libre mais cela doit être occasionnel et vous devez ensuite nettoyer l'espace de votre dépôt.",
-      "playerNumber": 1,
-      "locationId": 1,
       "bonusQuestion": {
         "question": "Quels sont les mots associés à l’acronyme “COP” ?",
-        "answer": "Conférence des parties"
-      }
+        "answer": "Conférence des parties (Conference of parties)",
+        "source": "https://pactemondial.org/2024/11/08/climat-biodiversite-desertification-que-sont-les-cop-et-quimpliquent-elles-pour-le-secteur-prive/"
+      },
+      "playerNumber": 1,
+      "locationId": 0
     },
     {
       "id": 29,
@@ -585,8 +615,135 @@
             "answer": "2003",
             "isCorrect": false
           }
-        ]
+        ],
+        "source": "https://www.greenpeace.fr/connaitre-greenpeace/historique/"
       }
+    },
+    {
+      "id": 30,
+      "name": "Placarder des affiches informatives sur l'écologie",
+      "points": 5,
+      "description": "Les fun facts environnementaux que vous avez installés rencontrent un franc succès ! Les gens s'arrêtent pour lire vos panneaux et repartent avec le smile",
+      "playerNumber": 1,
+      "locationId": 6,
+      "bonusQuestion": {
+        "question": "Tous les combien de temps ont lieu les COP ?",
+        "answer": "Tous les ans !",
+        "source": "https://pactemondial.org/2024/11/08/climat-biodiversite-desertification-que-sont-les-cop-et-quimpliquent-elles-pour-le-secteur-prive/"
+      }
+    },
+    {
+      "id": 31,
+      "name": "Ecouter un podcast sur les enjeux environnementaux",
+      "points": 5,
+      "description": "Vous avez découvert sur votre application un podcast animé par des passionnés qui parle de sujet qui vous touchent. A écouter n'importe ou, vous attendez le prochain épisode avec hâte ",
+      "playerNumber": 1,
+      "locationId": 6,
+      "bonusQuestion": {
+        "question": "Pouvez-vous évoquer une thématique que vous souhaiteriez voir abordée lors d’un podcast ?",
+        "source": "https://bonpote.com/les-podcasts-indispensables-sur-lenvironnement-et-le-climat/"
+      }
+    },
+    {
+      "id": 32,
+      "name": "Discuter de vos actions pour limiter votre empreinte carbone",
+      "points": 5,
+      "description": "Super ! A l'issue de cette discussion, vous avez découvert de nouvelles pratiques éco-responsables qui vous permettront de réduire votre empreinte carbone !",
+      "playerNumber": 2,
+      "locationId": 6,
+      "bonusQuestion": {
+        "question": "Citez 2 actions que vous faites dans la vie quotidienne qui vous permettent de réduire votre empreinte carbone.",
+        "source": "https://agirpourlatransition.ademe.fr/particuliers/conso/conso-responsable/connaissez-vous-votre-empreinte-climat"
+      }
+    },
+    {
+      "id": 33,
+      "name": "Faire des exercices de respiration",
+      "points": 5,
+      "description": "Si vous le voulez bien, fermez les yeux quelques instants. Imaginez vous sur votre plage favorite. Vous remuez doucement les orteils dans le sable. Vous sentez le vent sur votre tête. Respirez.",
+      "playerNumber": 1,
+      "locationId": 6,
+      "bonusQuestion": {
+        "question": "Donnez 2 types d'exercices qui permettent de travailler la respiration.",
+        "source": "https://conseilsport.decathlon.fr/nos-exercices-de-respiration"
+      }
+    },
+    {
+      "id": 34,
+      "name": "Créer un espace de discussion libre entre voisins",
+      "description": "Vous installez quelques chaises autour d'un banc et invitez les habitants à prendre le temps de discuter avec vous de sujets qui les touchent.",
+      "points": 15,
+      "bonusQuestion": {
+        "question": "La phrase suivante est le début d'une histoire. A tour de rôle, chaque joueur la complète par une phrase en commenceant par le.a psy. Voici le début de l'histoire : En revenant de la forêt j'ai fait une recontre surprenante ...  A votre imagination !"
+      },
+      "roleId": 6,
+      "locationId": 0
+    },
+    {
+      "id": 35,
+      "name": "Enregistrer un podcast sur l'éco-anxiété",
+      "description": "Vous produisez un super épisode de votre podcast sur les bonnes pratiques pour faire diminuer l'éco-anxieté ! Maintenant vous n'avez plus qu'a le publier pour que tout le monde puisse en profiter",
+      "points": 10,
+      "bonusQuestion": {
+        "question": "Connaissez-vous des podcasts sur ces sujets et en avez-vous déjà écoutés ? Si oui, lesquels ?",
+        "source": "https://bonpote.com/les-podcasts-indispensables-sur-lenvironnement-et-le-climat/"
+      },
+      "roleId": 6,
+      "locationId": 2
+    },
+    {
+      "id": 36,
+      "name": "Mettre en place une boite de retour des avis des employés",
+      "description": "Les employés vous saluent pour cette belle action. A peine installée, la boîte est déjà pleine de bonnes idées...",
+      "points": 10,
+      "bonusQuestion": {
+        "question": "Dans votre lieu actuel de travail, d'études ou d'occupation quotidienne, que changeriez-vous ?"
+      },
+      "roleIds": [
+        5,
+        6,
+        4
+      ],
+      "locationId": 3
+    },
+    {
+      "id": 37,
+      "name": "Participer à un jardin collaboratif",
+      "points": 10,
+      "description": "Des légumes de saison en pagaille, une haie de fruits rouges, des arbres fruitiers,... Derrière l'école se trouve une vraie oasis dans lequel petit et grand jardinent tous ensembles et produisent de quoi se régaler !",
+      "playerNumber": 2,
+      "locationId": 4,
+      "bonusQuestion": {
+        "question": "Citez 4 éléments à faire pousser dans un jardin collaboratif",
+        "source": "https://solidarites.gouv.fr/les-jardins-collectifs"
+      }
+    },
+    {
+      "id": 38,
+      "name": "Inviter un psy pour parler de stress",
+      "description": "Le psychologue de votre secteur s'arrête pour une après-midi. Il tient un stand dans le hall de votre établissement et cela intéresse quelques curieux qui ne savaient pas qu'on pouvait faire appel à un psy !",
+      "points": 15,
+      "bonusQuestion": {
+        "question": "A quel moment pouvez-vous faire appel à un psychologue de l'éducation nationale ?",
+        "answer": "Tout le temps !"
+      },
+      "roleIds": [
+        6,
+        1
+      ],
+      "locationId": 4
+    },
+    {
+      "id": 39,
+      "name": "Etudier les feuilles mortes pour réfléchir à la création d'un carburant biodégradable",
+      "description": "En réalité, cette technique a déjà été inventée par une équipe de l'université de Cambridge. Elle a mis au point une \"feuille artificielle\" flottante sur l'eau, qui se sert des exacts mêmes ingrédients qu'une feuille pour produire des carburants plus propres.",
+      "points": 5,
+      "bonusQuestion": {
+        "question": "Les feuilles mortes apparaissent plus à l'automne. Et vous, quelle est votre saison préférée ?",
+        "source": "https://www.geo.fr/sciences/des-chercheurs-parviennent-a-produire-du-carburant-propre-a-partir-de-feuilles-artificielles-211416"
+      },
+      "roleId": 3,
+      "locationId": 5
     }
   ],
   "events": []

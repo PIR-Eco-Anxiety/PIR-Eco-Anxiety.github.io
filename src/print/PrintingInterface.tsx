@@ -1,124 +1,66 @@
-import { Box, Button, FormControl, InputLabel, MenuItem, Select, Stack } from "@mui/material";
-import { useRef, useState } from "react";
-import GameSourceSelector from "../components/GameSourceSelector";
+import { Alert, Box, Button, Typography } from "@mui/material";
+import { useRef } from "react";
 import PrintIcon from '@mui/icons-material/Print';
-import PrintRoleSheet from "./RoleSheet";
-import { Game } from "../models/game";
-import defaultGame from "../defaultGame.json";
 import { useReactToPrint } from "react-to-print";
 import Page from "../components/Page";
-
-enum PrintTarget {
-  ROLE_SHEET,
-  MAP,
-}
+import { PrintPage } from "./PrintPage";
 
 export function Print() {
-  const [elementToPrint, setElementToPrint] = useState<React.ReactElement | null>(null);
   const contentRef = useRef<HTMLDivElement | null>(null);
-  const [printTarget, setPrintTarget] = useState<PrintTarget>(PrintTarget.ROLE_SHEET);
-  const [game, setGame] = useState<Game>(defaultGame);
   const reactToPrint = useReactToPrint({
     contentRef,
-    documentTitle: 'Impression JDS',
-    
+    documentTitle: "Impression Res'PIR",
   });
-
+  const images = [
+    "/carte-rot.png",
+    "/fiche-actions.png",
+    "/fiche-eleve.png",
+    "/fiche-elue.png",
+    "/fiche-journaliste.png",
+    "/fiche-professeur.png",
+    "/fiche-psy.png",
+    "/fiche-responsable-usine.png",
+    "/fiche-scientifique.png",
+  ]
 
   return (
     <Page>
       <Box ref={contentRef} sx={{
-        color: 'black',
-        display: 'none',
+        // display: 'none',
         '@media print': {
           display: 'block',
         },
       }}>
-        {elementToPrint}
+        {images.map((image, index) => (
+          <PrintPage key={index}>
+            <img
+              src={image}
+              alt={`Image ${index + 1}`}
+              style={{
+                width: '100%',
+                height: '100%',
+                breakAfter: 'avoid'
+              }}
+            />
+          </PrintPage>
+        ))}
       </Box>
       <Box displayPrint='none'>
-        <Stack spacing={2}>
-          <GameSourceSelector setGame={setGame} />
-          <FormControl fullWidth>
-            <InputLabel>Que voulez-vous imprimer ?</InputLabel>
-            <Select
-              variant='outlined'
-              value={printTarget}
-              onChange={(event) => {
-                setPrintTarget(event.target.value as PrintTarget);
-              }}
-            > 
-              <MenuItem value={PrintTarget.ROLE_SHEET}>Une fiche de role</MenuItem>
-              <MenuItem value={PrintTarget.MAP}>La carte</MenuItem>
-            </Select>
-          </FormControl>
-
-          {printTarget != null && <PrintSwitch game={game} target={printTarget} setElementToPrint={setElementToPrint} />}
-
-          <Button
-            variant="contained"
-            onClick={() => reactToPrint()}
-            startIcon={<PrintIcon />}
-          >
-            Imprimer
-          </Button>
-        </Stack>
+        <Typography variant='h2' component='h1' sx={{ mb: 2, textAlign: 'center' }}>
+          Impression
+        </Typography>
+        <Alert severity="info" sx={{ mb: 2 }}>
+          L'impression des fiches de role et la carte ne sont pas possibles pour les scénarios créés par les utilisateurs.
+        </Alert>
+        <Button
+          variant="contained"
+          fullWidth
+          onClick={() => reactToPrint()}
+          startIcon={<PrintIcon />}
+        >
+          Imprimer
+        </Button>
       </Box>
     </Page>
   );
-}
-
-function PrintSwitch({game, target, setElementToPrint}: {game: Game, target: PrintTarget, setElementToPrint: (element: React.ReactElement) => void}) {
-  const [roleSelection, setRoleSelection] = useState<string>('');
-  const printAll = () => {
-    setElementToPrint(
-      <>
-        {game.roles.map((role, index) => (
-          <PrintRoleSheet key={index} game={game} role={role} />
-        ))}
-      </>
-    )
-  }
-
-  const printRole = (roleId: number) => {
-    const role = game.roles.find(role => role.id === roleId)!;
-    setElementToPrint(<PrintRoleSheet game={game} role={role} />);
-  }
-
-  switch (target) {
-    case PrintTarget.ROLE_SHEET:
-      const label = "Choisissez un role";
-      return (
-        <FormControl>
-          <InputLabel>{label}</InputLabel>
-          <Select
-            label={label}
-            variant='outlined'
-            value={roleSelection}
-            onChange={(event) => {
-              if (event.target.value === null || typeof event.target.value !== 'number') {
-                return;
-              }
-              const roleId = event.target.value!;
-              setRoleSelection(roleId);
-              if (roleId === -1) {
-                printAll();
-                return;
-              }
-              printRole(roleId);
-            }}
-          >
-            <MenuItem value={-1}>Tous</MenuItem>
-            {game.roles.map((role, index) => (
-              <MenuItem key={index} value={role.id}>{role.name}</MenuItem>
-            ))}
-          </Select>
-        </FormControl>
-      )
-    case PrintTarget.MAP:
-      return <></>
-    default:
-      return null;
-  }
-
 }

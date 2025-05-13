@@ -2,6 +2,7 @@ export const MULTIPLIER = 1.2;
 
 export interface QuestionBase {
   question: string;
+  source?: string;
 }
 
 export interface MultipleChoiceQuestion extends QuestionBase {

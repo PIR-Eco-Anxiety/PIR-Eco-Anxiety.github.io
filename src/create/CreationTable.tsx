@@ -4,7 +4,7 @@ import { LocationCreationCard, RoleCreationCard, EventCreationCard, ActionCreati
 import { Box, Button, Link, Stack, styled, Tab, Tabs, Typography } from "@mui/material";
 import CloudUploadIcon from '@mui/icons-material/CloudUpload';
 import { a11yProps, CustomTabPanel } from "../components/CustomTabPanel";
-import { CloudDownload } from "@mui/icons-material";
+import { CloudDownload, Restore } from "@mui/icons-material";
 import { Action, isGroupAction, isPersonalAction } from "../models/action";
 import { Game } from "../models/game";
 import { Role } from "../models/role";
@@ -139,6 +139,15 @@ function ImportExportButtons({game, setGame}: {game: Game, setGame: (game: Game)
             });
           }}
         />
+      </Button>
+      <Button
+        variant="outlined"
+        onClick={() => {
+          setGame(JSON.parse(JSON.stringify(defaultGame)));
+        }}
+        startIcon={<Restore />}
+      >
+        Réinitialiser
       </Button>
     </Stack>
   );

@@ -73,7 +73,12 @@ let theme = createTheme({
     background: {
       paper: green[50],
     }
-  }
+  },
+  typography: {
+    h2: {
+      fontWeight: 400,
+    }
+  },
 })
 
 theme = responsiveFontSizes(theme, {

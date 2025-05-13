@@ -9,7 +9,7 @@ interface ActionBase {
 }
 
 export function calculateScore(action: Action, correct: boolean): number {
-  return action.points * (correct ? MULTIPLIER : 1);
+  return Math.ceil(action.points * (correct ? MULTIPLIER : 1));
 }
 
 export interface SharedAction extends ActionBase {

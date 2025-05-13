@@ -84,6 +84,14 @@ function Play({saveData, setSaveData}: {saveData: SaveData, setSaveData: (saveDa
     <Page>
       <Container maxWidth="md">
         <ScoreCard score={saveData.score} />
+        <Button
+          variant="contained"
+          fullWidth
+          onClick={() => setScore(saveData.score - 5)}
+          sx={{ marginBottom: 2 }}
+        >
+          Déplacement par voiture
+        </Button>
         <ActionFilters game={saveData.game} setFilteredActions={setFilteredActions} />
         <ActionPopup action={currentAction} onCancel={() => setCurrentAction(undefined)} onQuestionAnswered={(correct) => {
           setScore(saveData.score + calculateScore(currentAction!, correct));

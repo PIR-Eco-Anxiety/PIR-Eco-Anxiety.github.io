@@ -283,6 +283,13 @@ function ActionBonusQuestionSelector({action, setAction}: {action: Action, setAc
               index={multipleChoiceQuestion.answers.length - 1}
               setArray={answers => setAction({...action, bonusQuestion: {...multipleChoiceQuestion, answers}})}
             />
+            <TextField
+              name="source"
+              label="Source"
+              value={multipleChoiceQuestion.source}
+              variant="outlined"
+              onChange={(e) => setAction({...action, bonusQuestion: {...multipleChoiceQuestion, source: e.target.value}})
+            }/>
           </Stack>
         </>
       );
@@ -304,18 +311,34 @@ function ActionBonusQuestionSelector({action, setAction}: {action: Action, setAc
             variant="outlined"
             onChange={(e) => setAction({...action, bonusQuestion: {...simpleQuestion, answer: e.target.value}})
           }/>
+          <TextField
+            name="source"
+            label="Source"
+            value={simpleQuestion.source}
+            variant="outlined"
+            onChange={(e) => setAction({...action, bonusQuestion: {...simpleQuestion, source: e.target.value}})
+          }/>
         </>
       );
     case BonusQuestionType.OPEN:
       const openQuestion = action.bonusQuestion as OpenQuestion;
       return (
-        <TextField
+        <>
+          <TextField
           name="question"
           label="Question"
           value={openQuestion.question}
           variant="outlined"
           onChange={(e) => setAction({...action, bonusQuestion: {...openQuestion, question: e.target.value}})
         }/>
+        <TextField
+          name="source"
+          label="Source"
+          value={openQuestion.source}
+          variant="outlined"
+          onChange={(e) => setAction({...action, bonusQuestion: {...openQuestion, source: e.target.value != "" ? e.target.value : undefined}})
+        }/>
+        </>
       );
   }   
 }

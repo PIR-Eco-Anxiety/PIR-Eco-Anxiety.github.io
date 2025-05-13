@@ -1,10 +1,10 @@
 import { Box, BoxProps, styled } from "@mui/material";
 
 export const PrintPage = styled(Box)<BoxProps>(() => ({
-  // 'display': 'none',
+  'display': 'none',
   '@media print': {
     'breakAfter': 'page',
     'display': 'block',
-    'margin': '2rem',
+    'margin': '1rem',
   },
 }));

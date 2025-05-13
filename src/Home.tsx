@@ -17,7 +17,7 @@ function Home() {
         <Typography variant='h2' component='h1' gutterBottom>
           Res'PIR
         </Typography>
-        <Typography gutterBottom variant='h4' component='p'>
+        <Typography gutterBottom variant='h4' component='h2'>
           Le jeu sérieux pour soulager l'éco-anxiété !
         </Typography>
         <ChoicePrompt prompt='' options={options}/>
