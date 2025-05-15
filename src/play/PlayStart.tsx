@@ -4,9 +4,8 @@ import Page from "../components/Page";
 import { Game } from "../models/game";
 import defaultGame from "../defaultGame.json";
 import { Action, calculateScore } from "../models/action";
-import { Box, Button, Checkbox, Container, FormControlLabel, Stack } from "@mui/material";
+import { Box, Button, Checkbox, Container, FormControlLabel, Stack, Typography } from "@mui/material";
 import { useStickyState } from "../hooks/stickyState";
-import ScoreCard from "./ScoreCard";
 import { ActionCard, ActionFilters } from "./Actions";
 import { ActionPopup } from "./ActionCompletion";
 
@@ -83,7 +82,10 @@ function Play({saveData, setSaveData}: {saveData: SaveData, setSaveData: (saveDa
   return (
     <Page>
       <Container maxWidth="md">
-        <ScoreCard score={saveData.score} />
+        <Typography variant="h2" component="h1" gutterBottom textAlign="center">
+          {saveData.score} points
+        </Typography>
+        {/* <ScoreCard score={saveData.score} /> */}
         <Button
           variant="contained"
           fullWidth

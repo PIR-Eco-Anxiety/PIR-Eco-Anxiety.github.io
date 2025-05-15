@@ -1,4 +1,4 @@
-import { Container, Typography } from '@mui/material';
+import { Container, Typography, Button } from '@mui/material';
 import { ChoicePrompt } from './components/ChoicePrompt';
 import Page from './components/Page';
 import { pages } from './main';
@@ -21,6 +21,9 @@ function Home() {
           Le jeu sérieux pour soulager l'éco-anxiété !
         </Typography>
         <ChoicePrompt prompt='' options={options}/>
+        <Button variant='contained' fullWidth href='/article.pdf' component="a" sx={{ marginTop: 4 }}>
+          Consulter l'article de recherche
+        </Button>
       </Container>
     </Page>
   );

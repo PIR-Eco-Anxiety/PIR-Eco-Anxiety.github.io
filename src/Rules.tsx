@@ -17,9 +17,10 @@ export function Rules() {
       <Typography variant='h2' id="regles">Règles</Typography>
       <Typography variant='h3' id="preparation">Préparation</Typography>
       <Typography variant='body1'>
-        Ce jeu se joue en groupe de 4 à 6 joueurs.
+        Ce jeu se joue en groupe jusqu'à 7 joueurs.
         Chaque joueur choisit un rôle avant la partie.
-        Un rôle ne peut être choisi que par un seul joueur, et certains rôles ne seront pas choisis.
+        Un rôle ne peut être choisi que par un seul joueur.
+        A moins de 7 joueurs, certains rôles peuvent ne pas être choisis et le jeu restera jouable.
         Placez le plateau au centre d'une table.
         Pour chaque rôle choisi, placez le pion correspondant sur le point de départ sur le plateau.
       </Typography>
@@ -33,6 +34,9 @@ export function Rules() {
       <Typography variant='h3' id="deroulement">Déroulement de la partie</Typography>
       <Typography variant='body1'>
         Le joueur le plus jeune commence.
+        Avant de démarrer la partie, les joueurs se mettent d'accord sur un nombre de tours qui seront joués, de deux à cinq
+        (A titre indicatif, un tour peut durer 10 minutes).
+
         Un tour de jeu se déroule de la manière suivante :
       </Typography>
       <Typography variant='body1' component='div'>
@@ -42,8 +46,9 @@ export function Rules() {
           <li>Réaliser une <b>action</b></li>
         </ul>
         Les deux initiatives s'effectuent l'une puis l'autre, dans l'ordre voulu par le joueur.
-        Il est possible d'effectuer deux initiatives, une, ou zéro.
-        Quand tous les joueurs ont joué, on fait un point sur les actions réalisées et on établit la stratégie pour le tour suivant.
+        Il est possible d'effectuer deux initiatives, une, ou zéro, mais pas de faire deux déplacements ni deux actions.
+        A la fin d'un tour, quand tous les joueurs ont réalisé leurs initiatives, le maître de jeu fait un point sur les actions réalisées (points gagnés, impact).
+        Les joueurs établissent la stratégie pour le tour suivant.
       </Typography>
       <Typography variant="h4" id="deplacement">Déplacement</Typography>
       <Typography variant="body1">
@@ -73,32 +78,33 @@ export function Rules() {
             </tr>
           </tbody>
         </table>
+        Pour un déplacement en voiture, il est possible (avec leur accord) de prendre en covoiturage d'autres joueurs.
+        Le joueur se déplaçant en voiture peut donc déplacer des joueurs se trouvant sur son trajet (y compris son point de départ) jusqu'à n'importe quel autre lieu se trouvant sur son trajet (y compris son point d'arrivée).
       </Typography>
       <Typography variant="h4" id="actions">Actions</Typography>
       <Typography variant="body1">
-        Les actions sont définies par un titre, un lieu, une liste de rôles requis (sauf pour les actions non-spécifiques, voir dessous). Certaines actions sont individuelles tandis que d'autres ont pour condition la réunion de plusieurs joueurs en un lieu.
-        Une action réalisée durant un tour ne pourra pas être réalisée une nouvelle fois dans le même tour.
+        Les actions sont définies par un titre, un lieu, une liste de rôles requis (sauf pour les actions réalisables par tous, voir dessous).
+        En réalisant une action, une question est posée au(x) joueur(s) y ayant pris part.
+        Il n'est jamais obligatoire de répondre à la question. Les autres joueurs peuvent participer.
+        Une réponse correcte à la question apporte une bonification de points.
+        Certaines actions sont <em>individuelles</em> tandis que d'autres sont <em>collectives</em> et ont pour condition la réunion de plusieurs joueurs en un lieu.
+        Enfin, une action réalisée durant un tour ne pourra pas être réalisée une nouvelle fois dans le même tour.
       </Typography>
-      <Typography variant="body1" component="div">
+      <Typography variant="body1" component="div" sx={{ marginBottom: 8 }}>
         <ul>
           <li>
             Pour réaliser une <em>action individuelle</em>, le joueur déclenche l'action à son tour, à condition de se situer au bon lieu.
             S'il ne s'est pas encore déplacé, il peut le faire après son action.
           </li>
           <li>
-            Pour réaliser une <em>action collective</em>, il faut que les joueurs voulant réaliser l'action soient tous présents dans le lieu.
-            Le dernier joueur nécessaire pour réaliser l'action déclenche l'action. Si un joueur réalise une action collective à un tour, il ne peut pas réaliser d’action individuelle à ce même tour.
-            En réalisant une action, une question est posée au.x joueur.s y ayant pris part.
-            Une réponse correcte à la question apporte une bonification de points.
-          </li>
-          <li>
-            Les actions non-spécifiques sont définies sur la fiche Actions non-spécifiques.
-            Chacune est jouable une fois par tour.
-          </li>
-          <li>
-            Les actions ne pouvant être réalisées que par certains rôles sont définies sur les cartes de chaque rôle.
+            Pour réaliser une <em>action collective</em>, il faut que les joueurs voulant réaliser l'action soient tous présents dans le lieu au moment où le dernier joueur nécessaire pour réaliser l'action joue son tour.
+            Celui-ci peut alors déclencher l'action.
+            Si un joueur réalise une action collective à un tour, il ne peut pas réaliser d'action individuelle à ce même tour.
           </li>
         </ul>
+        Les actions réalisables par tous sont définies sur la carte Actions Réalisables Par Tous.
+        Chacune est jouable une fois par tour.
+        Les actions ne pouvant être réalisées que par certains rôles sont définies sur les cartes de chaque rôle.
       </Typography>
     </Page>
   )

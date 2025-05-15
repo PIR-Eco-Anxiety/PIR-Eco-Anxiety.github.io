@@ -58,7 +58,7 @@ export function NavBar({ drawer, pages, handleDrawerToggle }: NavBarProps) {
             </Box>
             <Stack direction="row" spacing={1} sx={{ ml: 'auto' }}>
             <Tooltip title="Consulter l'article de recherche" arrow>
-              <Link href="/vite.svg" color="inherit" component="a">
+              <Link href="/article.pdf" color="inherit" component="a">
                 <Description sx={{ width: 32, height: 32 }}/>
               </Link>
             </Tooltip>
