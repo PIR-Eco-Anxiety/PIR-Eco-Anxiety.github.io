@@ -86,7 +86,7 @@ theme = responsiveFontSizes(theme, {
 })
 
 export const pages = [
-  { name: 'Acceuil', path: '/', element: <Home />, description: "Retourner à l'acceuil" },
+  { name: 'Accueil', path: '/', element: <Home />, description: "Retourner à l'accueil" },
   { name: 'Jouer', path: '/play', element: <PlayStart />, description: "Commencer une partie" },
   { name: 'Créer', path: '/create', element: <Create />, description: "Créez un scénario" },
   { name: 'Imprimer', path: '/print', element: <Print />, description: "Imprimez le support physique" },
