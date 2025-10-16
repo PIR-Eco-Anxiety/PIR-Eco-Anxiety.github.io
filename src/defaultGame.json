@@ -744,6 +744,16 @@
       },
       "roleId": 3,
       "locationId": 5
+    },
+    {
+      "id": 40,
+      "name": "Déposer des tracts en accès libre",
+      "points": 5,
+      "description": "Vous avez préparé des tracts informatifs sur les initiatives écologiques locales et les avez déposés dans un espace accessible à tous à la mairie. Les habitants peuvent ainsi se renseigner librement et à tout moment sur vos actions et celles de la commune.",
+      "playerNumber": 1,
+      "bonusQuestion": {
+        "question": "Saurais-tu citer une initiative écologique locale ?"},
+      "locationId": 6
     }
   ],
   "events": []
